@@ -5,7 +5,7 @@
         <h5>You can opt to book only one bed in the house & live with flatmates who book the other beds.</h5>
     </div>
     <div class="col-md-8">
-      <img src="./assets/img/introduction.gif" height="300px" width="750px"/>
+      <img src="./assets/img/introduction.gif" height="300px" width="450px"/>
     </div>
     
   </div>
