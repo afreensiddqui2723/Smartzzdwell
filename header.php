@@ -15,7 +15,7 @@
   font-size: 14px;
   padding: 8px 20px !important;
   color: #fff !important;
-  background-color: #ab7636;
+  background-color: #000;
   text-transform: capitalize;
 }
 
@@ -29,7 +29,7 @@
 <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="" href="index.html">
+            <a class="" href="index.php">
              <img src="assets/img/logo.png" height="110px" width="110px"/>
             </a>
 
@@ -41,7 +41,7 @@
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link" href="index.php">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="about.php">About</a>
@@ -51,11 +51,11 @@
                         <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="tutorial.php" id="navbarDropdown"
                                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Blog
+                                        Property
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#"> blog</a>
-                                        <a class="dropdown-item" href="#">Single blog</a>
+                                        <a class="dropdown-item" href="#"> Find Property</a>
+                                        <a class="dropdown-item" href="#">Add Property</a>
                                        
                                     </div>
                                 </li>
