@@ -19,7 +19,7 @@
         </div>
    
     <!-- Close Banner -->
-
+    <?php include 'section.php';?>
     <!-- Start Section -->
     <section class="container py-5">
         <div class="row text-center pt-5 pb-3">

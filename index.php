@@ -7,8 +7,8 @@
 <?php include 'tophead.php';?>
 <?php include 'header.php';?>
 <?php include 'carousel.php';?> 
-<?php include 'facilities.php';?>
-<?php include 'section1.php';?>
+
+
     <!-- Start Featured Product -->
     <section class="bg-light">
         <div class="container py-5">
