@@ -54,6 +54,7 @@
                         </div>
         </div>
     </section>
+    <?php include 'faq.php';?> 
     <!-- End Featured Product -->
     <?php include 'footer.php';?>
 </body>

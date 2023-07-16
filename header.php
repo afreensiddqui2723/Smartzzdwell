@@ -29,9 +29,12 @@
 <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="" href="index.php">
-             <img src="assets/img/logo.png" height="110px" width="110px"/>
-            </a>
+            <!-- <a class="" href="index.php">
+             <img src="assets/img/logo.png" height="50px" width="50px"/>
+            </a> -->
+            <a href="index.php">
+  <img src="assets/img/logo.png" alt="SMARTZDWELL" style="width:82px;height:82px;">
+</a>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
