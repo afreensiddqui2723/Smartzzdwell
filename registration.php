@@ -44,6 +44,22 @@ color: black;
     background-color: #42AEEC;
     color: #fff;
 } */
+
+
+@media (min-width: 200px) and (max-width: 700px) {
+              .card bg-light {
+               width: 400px;
+              }
+                }
+                @media (min-width: 700px) and (max-width: 2000px) {
+                .card bg-light {
+               width: 900px;
+              }
+                /* @media (min-width: 900px) and (max-width: 900px) {
+                  .resp{
+                  display: none;
+                } */
+                }
 </style>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 

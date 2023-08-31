@@ -83,10 +83,10 @@ a {
                                     </div>
                                 </li>
 
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="properties.php">Property</a>
                               
-                        </li>
+                        </li> -->
 
 
                         <li class="nav-item">
