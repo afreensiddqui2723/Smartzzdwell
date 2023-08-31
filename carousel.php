@@ -48,6 +48,21 @@ body {
               a {
                 color: white;
               }
+              @media (min-width: 200px) and (max-width: 700px) {
+              .swiper-container {
+               display: none;
+              }
+                }
+                @media (min-width: 700px) and (max-width: 2000px) {
+                  .resp{
+                  display: none;
+                }
+                /* @media (min-width: 900px) and (max-width: 900px) {
+                  .resp{
+                  display: none;
+                } */
+                }
+                            
 </style>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -55,7 +70,12 @@ body {
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/css/swiper.min.css">
- <div class="swiper-container">
+          <div class="resp">
+          <img src= assets/img/mobilelogo.gif>
+          </div>
+    
+            <div class="swiper-container">
+            
                 <div class="swiper-wrapper">
               
                   <div class="swiper-slide">

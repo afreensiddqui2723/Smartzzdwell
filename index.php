@@ -56,7 +56,7 @@
     </section>
     <?php include 'faq.php';?> <hr>
     <?php include 'counter.php';?> </br>
-    <!-- End Featured Product -->
+    
     <?php include 'footer.php';?>
 </body>
 

@@ -26,9 +26,9 @@ flex-direction: column;
   margin: auto;
   
 }
-/* Style the buttons that are used to open and close the faq-page body */
+
 .faq-page {
-    /* background-color: #eee; */
+    
     color: #444;
     cursor: pointer;
     padding: 30px 20px;
@@ -47,14 +47,11 @@ flex-direction: column;
    
 }
 
-
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active,
 .faq-page:hover {
     background-color: #F9F9F9;
 }
 
-/* Style the faq-page panel. Note: hidden by default */
 .faq-body {
     
     background-color: white;
@@ -64,7 +61,7 @@ flex-direction: column;
 
 .faq-page:after {
     content: '\02795';
-    /* Unicode character for "plus" sign (+) */
+   
     font-size: 13px;
     color: #777;
     float: right;
@@ -73,7 +70,7 @@ flex-direction: column;
 
 .active:after {
     content: "\2796";
-    /* Unicode character for "minus" sign (-) */
+    
 }</style>
 </head>
 
@@ -84,10 +81,9 @@ flex-direction: column;
         <section class="faq-container">
             <div class="faq-one">
 
-                <!-- faq question -->
+               
                 <h5 class="faq-page">What is smartzdwell</h5>
 
-                <!-- faq answer -->
                 <div class="faq-body">
                     <p>Demo data Demo data Demo dataDemo
                          dataDemo data Demo dataDemo data Demo data Demo dataDemo dataDemo dataDemo data Demo data Demo dat.</p>
@@ -97,11 +93,8 @@ flex-direction: column;
 
             <div class="faq-two">
 
-                <!-- faq question -->
+               
                 <h5 class="faq-page">What makes us different</h5>
-
-                <!-- faq answer -->
-
                 <div class="faq-body">
                     <p>Demo data Demo data Demo dataDemo dataDemo 
                         data Demo dataDemo data Demo data Demo dataDemo dataDemo dataDemo data Demo data Demo dat.</p>
@@ -112,10 +105,8 @@ flex-direction: column;
 
             <div class="faq-three">
 
-                <!-- faq question -->
+                
 <h5 class="faq-page">The services you will never forget</h5>
-
-                <!-- faq answer -->
                 <div class="faq-body">
                     <p>Demo data Demo data Demo dataDemo 
                         dataDemo data Demo dataDemo data Demo data Demo dataDemo dataDemo dataDemo data Demo data Demo dat.</p>
