@@ -77,8 +77,8 @@ a {
                                         Property
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="signin.php" target: _blank> Find Property</a>
-                                        <a class="dropdown-item" href="#">Add Property</a>
+                                        <a class="dropdown-item" href="signup.php" target: _blank> Find Property</a>
+                                        <a class="dropdown-item" href="signup.php">Add Property</a>
                                        
                                     </div>
                                 </li>

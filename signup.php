@@ -27,12 +27,12 @@
     <form>
       <input type="email" id="login" class="fadeIn second" name="login" placeholder="Enter Email" required>
       <input type="password" id="password" class="fadeIn third" name="login" placeholder="password" required>
-      <input type="submit" class="fadeIn fourth" value="Sign Up" style="margin-top:10px">
+      <input type="submit" class="fadeIn fourth" value="Sign In" style="margin-top:10px">
       
     </form>
 
     <div id="formFooter">
-    <a class="underlineHover" href="signin.php" style="color: #000">Already signup? Sign In</a><br/>
+    <a class="underlineHover" href="signin.php" style="color: #000">No have an account? Sign up</a><br/>
       <a class="underlineHover" href="#" style="color: #000">Forgot Password?</a>
     </div>
 
