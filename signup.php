@@ -27,7 +27,7 @@
     <form>
       <input type="email" id="login" class="fadeIn second" name="login" placeholder="Enter Email" required>
       <input type="password" id="password" class="fadeIn third" name="login" placeholder="password" required>
-      <input type="submit" class="fadeIn fourth" value="Sign In" style="margin-top:10px">
+      <input type="submit" class="fadeIn fourth" value="Sign Up" style="margin-top:10px">
       
     </form>
 
