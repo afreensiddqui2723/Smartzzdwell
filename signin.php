@@ -1,3 +1,28 @@
+<?php      
+    include('dbconn.php');  
+    if( isset($_POST['submitted']) ){
+    $username = $_POST['email'];  
+    $password = $_POST['password'];  
+      
+        //to prevent from mysqli injection  
+        $username = stripcslashes($username);  
+        $password = stripcslashes($password);  
+        $username = mysqli_real_escape_string($con, $username);  
+        $password = md5(mysqli_real_escape_string($con, $password));  
+      
+        $sql = "select * from users where email = '$username' and password = '$password'";  
+        $result = mysqli_query($con, $sql);  
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
+        $count = mysqli_num_rows($result);  
+          
+        if($count == 1){  
+            echo "<h1><center> Login successful </center></h1>";  
+        }  
+        else{  
+            echo "<h1> Login failed. Invalid username or password.</h1>";  
+        } 
+      }    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,15 +49,15 @@
       <img src="assets/img/logo.png" id="icon"  width= "100px" height= "200px"/>
     </div>
 
-    <form>
-      <input type="email" id="login" class="fadeIn second" name="login" placeholder="Enter Email" required>
-      <input type="password" id="password" class="fadeIn third" name="login" placeholder="password" required>
-      <input type="submit" class="fadeIn fourth" value="Sign Up" style="margin-top:10px">
+    <form action="" method="POST">
+      <input type="email" id="login" class="fadeIn second" name="email" placeholder="Enter Email" required>
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="password" required>
+      <input type="submit" class="fadeIn fourth" name="submitted" value="Sign In" style="margin-top:10px">
       
     </form>
 
     <div id="formFooter">
-    <a class="underlineHover" href="signin.php" style="color: #000">Already signup? Sign In</a><br/>
+    <a class="underlineHover" href="signup.php" style="color: #000">Need an account? Sign Up</a><br/>
       <a class="underlineHover" href="#" style="color: #000">Forgot Password?</a>
     </div>
 
