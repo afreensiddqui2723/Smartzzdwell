@@ -32,7 +32,7 @@
     </form>
 
     <div id="formFooter">
-    <a class="underlineHover" href="signin.php" style="color: #000">No have an account? Sign up</a><br/>
+    <a class="underlineHover" href="signin.php" style="color: #000">Not have an account? Sign in</a><br/>
       <a class="underlineHover" href="#" style="color: #000">Forgot Password?</a>
     </div>
 
