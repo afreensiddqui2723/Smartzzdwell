@@ -86,6 +86,27 @@ label{
     	<input name="" class="form-control" placeholder="Phone number" type="phone"> 
     </div> <!-- form-group// -->
 
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-arrow-circle-right"></i> </span>
+		</div>
+        <label for="home" style=" margin-left:10px;">State: </label>
+		<select class="form-control" name= "home">
+			<option> Uttar pradesh</option>
+			<option>Madhya Pradesh</option>
+		</select>
+	</div>
+
+	<div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-arrow-circle-right"></i> </span>
+		</div>
+        <label for="home" style=" margin-left:10px;">City: </label>
+		<select class="form-control" name= "home">
+			<option>Aligarh</option>
+			<option>Delhi</option>
+		</select>
+	</div>
 
     <div class="form-group input-group">
     	<div class="input-group-prepend">
@@ -93,8 +114,12 @@ label{
 		</div>
         <label for="price" style=" margin-left:10px;">Select Price: </label>
 		<select class="form-control" name= "price">
-			<option>₹ 7500</option>
-			<option>₹ 9500</option>
+			<option>Under ₹1,000</option>
+            <option>₹1,000 - ₹5,000</option>
+            <option>₹5,000 - ₹10,000</option>
+            <option>₹10,000 - ₹20,000</option>
+            <option>Over ₹20,000</option>
+			
 		</select>
 	</div>
 

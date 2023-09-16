@@ -47,6 +47,18 @@ label{
 .input-group-prepend{
     border: 1px solid black;
 }
+
+.btn-upload{
+	background-color: #59ab6e !important;
+    border-color: #56ae6c !important;
+	color: white;
+	border-radius: 5px;
+	width: 100px;
+}
+
+a{
+	color: #59ab6e !important;
+}
 </style>
 
 
@@ -98,6 +110,28 @@ label{
 			<option>Mix</option>
 		</select>
 	</div>
+
+	<div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-arrow-circle-right"></i> </span>
+		</div>
+        <label for="home" style=" margin-left:10px;">State: </label>
+		<select class="form-control" name= "home">
+			<option> Uttar pradesh</option>
+			<option>Madhya Pradesh</option>
+		</select>
+	</div>
+
+	<div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-arrow-circle-right"></i> </span>
+		</div>
+        <label for="home" style=" margin-left:10px;">City: </label>
+		<select class="form-control" name= "home">
+			<option>Aligarh</option>
+			<option>Delhi</option>
+		</select>
+	</div>
     
     <div class="form-group input-group">
     	<div class="input-group-prepend">
@@ -109,6 +143,32 @@ label{
 			<option>2</option>
             <option> 3</option>
 			<option>4</option>
+		</select>
+	</div>
+
+	<div class="form-group input-group">
+    	<div class="input-group-prepend">
+        <span class="input-group-text"> <i class="fa fa-arrow-circle-right"></i> </span>
+		</div>
+        <label for="rooms" style=" margin-left:10px;">Suitable for girls: </label> 
+		<select class="form-control" name="rooms">
+			<option> Yes</option>
+			<option>No</option>
+		</select>
+	</div>
+
+	<div class="form-group input-group">
+    	<div class="input-group-prepend">
+        <span class="input-group-text"> <i class="fa fa-arrow-circle-right"></i> </span>
+		</div>
+        <label for="price" style=" margin-left:10px;">Select Price: </label>
+		<select class="form-control" name= "price">
+			<option>Under ₹1,000</option>
+            <option>₹1,000 - ₹5,000</option>
+            <option>₹5,000 - ₹10,000</option>
+            <option>₹10,000 - ₹20,000</option>
+            <option>Over ₹20,000</option>
+			
 		</select>
 	</div>
 
@@ -153,17 +213,31 @@ label{
         <span class="input-group-text"> <i class="fa fa-arrow-circle-right"></i> </span>
 		</div>
         <label for="furnished" style=" margin-left:10px;">Modulation: </label>
-		<select class="form-control" name= "furnished">
+		<select class="form-control" name= "furnished" >
 			<option>Furnished</option>
             <option>Semi furnished</option>
 			<option>Not furnished</option>
 		</select>
 	</div>
+  
+	<div class="form-group input-group">
+    	<div class="input-group-prepend">
+        <span class="input-group-text"> <i class="fa fa-arrow-circle-right"></i> </span>
+		</div>
+        <label for="UploadPhotos" style=" margin-left:10px;">Upload Photos: </label>
+		<input type="file"  name="image" accept="image/*" required>
+  		<input type="submit" class="btn-upload" value="Upload">
+	</div>
 
 
+	<div class="form-group input-group">
+    	
+		<input type="checkbox" id="terms" name="terms"  required>
+    			<a href="tnc.html" target="popup" 
+  onclick="window.open('tnc.html','popup','width=600,height=600'); return false;"> * I agree to the terms and conditions </a>
+	</div>
 
-
-
+			
     <!-- <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
