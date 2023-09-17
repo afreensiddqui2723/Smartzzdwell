@@ -1,5 +1,6 @@
 <?php      
-    include('dbconn.php');  
+    include('dbconn.php'); 
+    session_start(); 
     if( isset($_POST['submitted']) ){
     $username = $_POST['email'];  
     $password = $_POST['password'];  
@@ -16,7 +17,11 @@
         $count = mysqli_num_rows($result);  
           
         if($count == 1){  
-            echo "<h1><center> Login successful </center></h1>";  
+            // echo "<h1><center> Login successful </center></h1>"; 
+            $_SESSION["userId"] = $row['id'];
+            if(isset($_SESSION["url"]))
+            header("Location: " . $_SESSION["url"]);
+
         }  
         else{  
             echo "<h1> Login failed. Invalid username or password.</h1>";  

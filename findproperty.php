@@ -1,3 +1,13 @@
+<?php
+session_start();
+if (!isset($_SESSION["userId"])){
+	$actual_link = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	$_SESSION["url"] = $actual_link;
+	header("Location: signin.php");
+}
+
+
+?>
 <html>
 </head>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
