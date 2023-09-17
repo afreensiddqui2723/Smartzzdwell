@@ -5,12 +5,14 @@ if (!isset($_SESSION["userId"])){
 	$_SESSION["url"] = $actual_link;
 	header("Location: signin.php");
 }
-
+// $sql = "select * from properties";  
+// $result = mysqli_query($con, $sql); 
 
 ?>
 <html>
 </head>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
@@ -61,6 +63,7 @@ label{
 
 
 <?php include 'head.php';?>
+
 </head>
 <body>
 <?php include 'tophead.php';?>
@@ -78,12 +81,12 @@ label{
 	<p class="divider-text">
         <span class="bg-light">Find property</span>
     </p> 
-	<form style="width: 50vw;">
+	<form style="width: 50vw;" action="checkit.php" method="POST">
 	<div class="form-group input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
 		 </div>
-        <input name="" class="form-control" placeholder="Full name" type="text">
+        <input name="name" class="form-control" placeholder="Full name" type="text">
     </div> <!-- form-group// -->
     
 
@@ -93,7 +96,7 @@ label{
 		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
 		</div>
 		
-    	<input name="" class="form-control" placeholder="Phone number" type="phone"> 
+    	<input name="phone" class="form-control" placeholder="Phone number" type="phone"> 
     </div> <!-- form-group// -->
 
     <div class="form-group input-group">
@@ -101,9 +104,10 @@ label{
 		    <span class="input-group-text"> <i class="fa fa-arrow-circle-right"></i> </span>
 		</div>
         <label for="home" style=" margin-left:10px;">State: </label>
-		<select class="form-control" name= "home">
-			<option> Uttar pradesh</option>
-			<option>Madhya Pradesh</option>
+		<select class="form-control" name= "state" id="state-dropdown">
+		<option value="">Select State</option>
+		<option value="Uttar Pradesh"> Uttar Pradesh</option>
+			<option value="Madhya Pradesh">Madhya Pradesh</option>
 		</select>
 	</div>
 
@@ -112,9 +116,9 @@ label{
 		    <span class="input-group-text"> <i class="fa fa-arrow-circle-right"></i> </span>
 		</div>
         <label for="home" style=" margin-left:10px;">City: </label>
-		<select class="form-control" name= "home">
-			<option>Aligarh</option>
-			<option>Delhi</option>
+		<select class="form-control" name= "city" id="city-dropdown">
+			<!-- <option>Aligarh</option>
+			<option>Delhi</option> -->
 		</select>
 	</div>
 
@@ -124,11 +128,11 @@ label{
 		</div>
         <label for="price" style=" margin-left:10px;">Select Price: </label>
 		<select class="form-control" name= "price">
-			<option>Under ₹1,000</option>
-            <option>₹1,000 - ₹5,000</option>
-            <option>₹5,000 - ₹10,000</option>
-            <option>₹10,000 - ₹20,000</option>
-            <option>Over ₹20,000</option>
+			<option value="Under ₹1,000">Under ₹1,000</option>
+            <option value="₹1,000 - ₹5,000">₹1,000 - ₹5,000</option>
+            <option value="₹5,000 - ₹10,000">₹5,000 - ₹10,000</option>
+            <option value="₹10,000 - ₹20,000">₹10,000 - ₹20,000</option>
+            <option value="Over ₹20,000">Over ₹20,000</option>
 			
 		</select>
 	</div>
@@ -138,10 +142,10 @@ label{
         <span class="input-group-text"> <i class="fa fa-arrow-circle-right"></i> </span>
 		</div>
         <label for="furnished" style=" margin-left:10px;">Modulation: </label>
-		<select class="form-control" name= "furnished">
-			<option>Furnished</option>
-            <option>Semi furnished</option>
-			<option>Not furnished</option>
+		<select class="form-control" name= "modulation">
+			<option value="Furnished">Furnished</option>
+            <option value="Semi furnished">Semi furnished</option>
+			<option value="Not furnished">Not furnished</option>
 		</select>
 	</div>
     <div class="form-group"> 
@@ -156,4 +160,27 @@ label{
 <!--container end.//-->
 
 <br><br><?php include 'footer.php';?>
+<script>
+	$(document).ready(function() {
+		$('#state-dropdown').on('change', function() {
+			var state_id = this.value;
+			// alert(state_id);
+
+            $.ajax({
+                url: "findcity.php",
+                type: "POST",
+                data: {
+                    state: state_id
+                },
+                cache: false,
+                success: function(result){
+                    $("#city-dropdown").html(result);
+                }
+            });
+         
+         
+    });
+	});
+
+</script>
 </body></html>

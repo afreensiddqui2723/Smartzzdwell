@@ -1,3 +1,4 @@
+<?php  include('dbconn.php');   ?>
 <?php
 session_start();
 if (!isset($_SESSION["userId"])){
@@ -6,7 +7,62 @@ if (!isset($_SESSION["userId"])){
 	header("Location: signin.php");
 }
 
-
+if( isset($_POST['submitted']) ){
+	echo '<script>alert("Welcome to Geeks for Geeks")</script>';
+    $username = $_POST['name'];  
+    $address = $_POST['address'];  
+    $phone = $_POST['phone'];  
+    $homeType = $_POST['homeType'];  
+    $state = $_POST['state'];  
+    $city = $_POST['city'];  
+    $rooms = $_POST['rooms'];  
+    $girls = $_POST['girls'];  
+    $price = $_POST['price'];  
+    $kitchen = $_POST['kitchen'];  
+    $hall = $_POST['hall'];  
+    $parking = $_POST['parking'];  
+    $modulation = $_POST['modulation'];  
+    $image_file=$_FILES['image']['name'];
+	$file = $_FILES['image']['tmp_name'];
+ 	// $path = $folder . $image_file;  
+ 	//$target_file=$folder.basename($image_file);
+ 	//$imageFileType=pathinfo($target_file,PATHINFO_EXTENSION);
+	//Allow only JPG, JPEG, PNG & GIF etc formats
+	// if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+	// && $imageFileType != "gif" ) {
+	// $error[] = 'Sorry, only JPG, JPEG, PNG & GIF files are allowed';   
+	// echo 'Sorry, only JPG, JPEG, PNG & GIF files are allowed';
+	// }
+	//Set image upload size 
+	
+		if ($_FILES["image"]["size"] > 5048576) {
+	$error[] = 'Sorry, your image is too large. Upload less than 5 MB in size.';
+	echo 'Sorry, your image is too large. Upload less than 5 MB in size.';
+	}
+	if(!isset($error))
+	{
+		$img = file_get_contents($file);
+		$imageData = base64_encode($img);
+      
+        //to prevent from mysqli injection  
+       
+		$sql = "INSERT INTO properties (name, address, phone, homeType, state, city, noOfRooms, 
+		girls, price, kitchen, hall, parking, modulation, images) VALUES 
+		('$username','$address','$phone','$homeType','$state','$city','$rooms',
+		'$girls','$price','$kitchen','$hall','$parking','$modulation', '$imageData')";  
+		$result = mysqli_query($con, $sql);  
+		// $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
+		// $count = mysqli_num_rows($result);  
+		  
+		if($result){  
+			echo '<script>alert("Property Added Successfully")</script>'; 
+		}  
+		else{  
+			echo '<script>alert(Error, Please try again)</script>';  
+		} 
+       
+	}
+}
 ?>
 
 <html>
@@ -91,34 +147,35 @@ a{
 	<p class="divider-text">
         <span class="bg-light">Add your property</span>
     </p> 
-	<form style="width: 40vw;">
+	<form style="width: 40vw;" method="POST" enctype="multipart/form-data">
+	<input type='hidden' name='submitted' id='submitted' value='1'/>
 	<div class="form-group input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
 		 </div>
-        <input name="" class="form-control" placeholder="Full name" type="text">
+        <input name="name" class="form-control" placeholder="Full name" type="text">
     </div> <!-- form-group// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-home"></i> </span>
 		 </div>
-        <input name="" class="form-control" placeholder="Address" type="text">
+        <input name="address" class="form-control" placeholder="Address" type="text">
     </div> <!-- form-group// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
 		</div>
 		
-    	<input name="" class="form-control" placeholder="Phone number" type="phone"> 
+    	<input name="phone" class="form-control" placeholder="Phone number" type="phone"> 
     </div> <!-- form-group// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-arrow-circle-right"></i> </span>
 		</div>
         <label for="home" style=" margin-left:10px;">Home type: </label>
-		<select class="form-control" name= "home">
-			<option> Separate</option>
-			<option>Mix</option>
+		<select class="form-control" name= "homeType">
+			<option value="Separate"> Separate</option>
+			<option value="Mix">Mix</option>
 		</select>
 	</div>
 
@@ -127,9 +184,9 @@ a{
 		    <span class="input-group-text"> <i class="fa fa-arrow-circle-right"></i> </span>
 		</div>
         <label for="home" style=" margin-left:10px;">State: </label>
-		<select class="form-control" name= "home">
-			<option> Uttar pradesh</option>
-			<option>Madhya Pradesh</option>
+		<select class="form-control" name= "state">
+			<option value="Uttar Pradesh"> Uttar Pradesh</option>
+			<option value="Madhya Pradesh">Madhya Pradesh</option>
 		</select>
 	</div>
 
@@ -138,10 +195,11 @@ a{
 		    <span class="input-group-text"> <i class="fa fa-arrow-circle-right"></i> </span>
 		</div>
         <label for="home" style=" margin-left:10px;">City: </label>
-		<select class="form-control" name= "home">
+		<input name="city" class="form-control" placeholder="City" type="text">
+		<!-- <select class="form-control" name= "home">
 			<option>Aligarh</option>
 			<option>Delhi</option>
-		</select>
+		</select> -->
 	</div>
     
     <div class="form-group input-group">
@@ -150,10 +208,10 @@ a{
 		</div>
         <label for="rooms" style=" margin-left:10px;">No. of rooms: </label> 
 		<select class="form-control" name="rooms">
-			<option> 1</option>
-			<option>2</option>
-            <option> 3</option>
-			<option>4</option>
+			<option value="1"> 1</option>
+			<option value="2">2</option>
+            <option value="3"> 3</option>
+			<option value="4">4</option>
 		</select>
 	</div>
 
@@ -162,9 +220,9 @@ a{
         <span class="input-group-text"> <i class="fa fa-arrow-circle-right"></i> </span>
 		</div>
         <label for="rooms" style=" margin-left:10px;">Suitable for girls: </label> 
-		<select class="form-control" name="rooms">
-			<option> Yes</option>
-			<option>No</option>
+		<select class="form-control" name="girls">
+			<option value="Yes"> Yes</option>
+			<option value="No">No</option>
 		</select>
 	</div>
 
@@ -174,11 +232,11 @@ a{
 		</div>
         <label for="price" style=" margin-left:10px;">Select Price: </label>
 		<select class="form-control" name= "price">
-			<option>Under ₹1,000</option>
-            <option>₹1,000 - ₹5,000</option>
-            <option>₹5,000 - ₹10,000</option>
-            <option>₹10,000 - ₹20,000</option>
-            <option>Over ₹20,000</option>
+			<option value="Under ₹1,000">Under ₹1,000</option>
+            <option value="₹1,000 - ₹5,000">₹1,000 - ₹5,000</option>
+            <option value="₹5,000 - ₹10,000">₹5,000 - ₹10,000</option>
+            <option value="₹10,000 - ₹20,000">₹10,000 - ₹20,000</option>
+            <option value="Over ₹20,000">Over ₹20,000</option>
 			
 		</select>
 	</div>
@@ -190,8 +248,8 @@ a{
 		</div>
         <label for="kitchen" style=" margin-left:10px;">Kitchen: </label>
 		<select class="form-control" name= "kitchen">
-			<option>Available</option>
-			<option>Not Available</option>
+			<option value="Available">Available</option>
+			<option value="Not Available">Not Available</option>
 		</select>
 	</div>
 
@@ -202,8 +260,8 @@ a{
 		</div>
         <label for="hall" style=" margin-left:10px;">Hall: </label>
 		<select class="form-control" name= "hall">
-			<option>Available</option>
-			<option>Not Available</option>
+			<option value="Available">Available</option>
+			<option value="Not Available">Not Available</option>
 		</select>
 	</div>
 
@@ -213,9 +271,9 @@ a{
 		</div>
         <label for="parking" style=" margin-left:10px;">Parking: </label>
 		<select class="form-control" name= "parking">
-			<option>Car</option>
-			<option>Bike</option>
-            <option value="">both</option>
+			<option value="Car">Car</option>
+			<option value="Bike">Bike</option>
+            <option value="Both">Both</option>
 		</select>
 	</div>
 
@@ -224,10 +282,10 @@ a{
         <span class="input-group-text"> <i class="fa fa-arrow-circle-right"></i> </span>
 		</div>
         <label for="furnished" style=" margin-left:10px;">Modulation: </label>
-		<select class="form-control" name= "furnished" >
-			<option>Furnished</option>
-            <option>Semi furnished</option>
-			<option>Not furnished</option>
+		<select class="form-control" name= "modulation" >
+			<option value="Furnished">Furnished</option>
+            <option value="Semi furnished">Semi furnished</option>
+			<option value="Not furnished">Not furnished</option>
 		</select>
 	</div>
   
@@ -243,7 +301,7 @@ a{
 
 	<div class="form-group input-group">
     	
-		<input type="checkbox" id="terms" name="terms"  required>
+		<input type="checkbox" id="terms" name="terms"  required>&nbsp&nbsp&nbsp
     			<a href="tnc.html" target="popup" 
   onclick="window.open('tnc.html','popup','width=600,height=600'); return false;"> * I agree to the terms and conditions </a>
 	</div>
