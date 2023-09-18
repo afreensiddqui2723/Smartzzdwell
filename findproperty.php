@@ -82,6 +82,7 @@ label{
         <span class="bg-light">Find property</span>
     </p> 
 	<form style="width: 50vw;" action="checkit.php" method="POST">
+	<input type='hidden' name='submitted' id='submitted' value='1'/>
 	<div class="form-group input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>

@@ -10,16 +10,27 @@
         $username = mysqli_real_escape_string($con, $username);  
         $password = md5(mysqli_real_escape_string($con, $password));  
       
-        $sql = "insert into users (email,password) values('$username','$password')";  
-        $result = mysqli_query($con, $sql);  
+        $sql2 = "SELECT * from users WHERE email = '$username'";  
+        $result2 = mysqli_query($con, $sql2);  
+        $count = mysqli_num_rows($result2); 
+        if($count >= 1){
+          echo '<script>alert("Email Already Exist")</script>'; 
+        }else{
+          $sql = "INSERT INTO users (email,password) values('$username','$password')";  
+          $result = mysqli_query($con, $sql);  
+        }
         // $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
         // $count = mysqli_num_rows($result);  
           
         if($result){  
-            echo "<h1><center> Register successful </center></h1>";  
+          echo '<script>alert("Register Successfully")</script>'; 
+          if(isset($_SESSION["url"]))
+            header("Location: " . $_SESSION["url"]);
+          else
+          header("Location: signin.php");
         }  
         else{  
-            echo "<h1> Login failed. Invalid username or password.</h1>";  
+          echo '<script>alert(Error, Please try again)</script>';  
         } 
    }
        

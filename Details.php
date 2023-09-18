@@ -1,3 +1,12 @@
+<?php      
+    include('dbconn.php'); 
+    session_start(); 
+    $idd = $_GET['idd']; 
+    //echo '<script>console.log('$idd')</script>'; 
+    $sql2 = "SELECT * from properties WHERE id='$idd'";  
+    $result2 = mysqli_query($con, $sql2); 
+    $row = mysqli_fetch_array($result2, MYSQLI_ASSOC); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -105,21 +114,30 @@
 <div class="class-container">
     <div class="class-row">
         <div class="box">
-            <img src="./assets/img/logo.png" alt="">
-        
+            <img src="data:image/png;base64,<?php echo $row['images'] ?>" alt=""> 
     </div>
     <div class="box2">
-            <h3 style="text-align:center">PG NAME</h3></br>
-            <h4>Display Price</h4>
+            <h3 style="text-align:center"><?php echo $row['name'] ?></h3></br>
+            <h4><?php echo $row['price'] ?></h4>
             <hr>
             <h5>Room Details</h5>
-        <li>Lorem ipsum dolor, sit amet consectetur adipisicing.
+        <li><b>Home Type: </b> <?php echo $row['homeType'] ?>
         </li>
-        <li>Lorem ipsum dolor, sit amet consectetur adipisicing.
+        <li><b>No. of Rooms: </b> <?php echo $row['noOfRooms'] ?>
         </li>
-        <li>Lorem ipsum dolor, sit amet consectetur adipisicing.
+        <li><b>Suitable for girls: </b> <?php echo $row['girls'] ?>
         </li>
-        <li>Lorem ipsum dolor, sit amet consectetur adipisicing.
+        <li><b>Kitchen: </b> <?php echo $row['kitchen'] ?>
+        </li>
+        <li><b>Hall: </b> <?php echo $row['hall'] ?>
+        </li>
+        <li><b>Parking: </b> <?php echo $row['parking'] ?>
+        </li>
+        <li><b>Modulation: </b> <?php echo $row['modulation'] ?>
+        </li>
+        <li><b>City: </b> <?php echo $row['city'] ?>
+        </li>
+        <li><b>State: </b> <?php echo $row['state'] ?>
         </li>
         
     </div>

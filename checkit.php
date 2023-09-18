@@ -2,6 +2,32 @@
     include('dbconn.php'); 
     session_start(); 
    
+    if(!empty($_POST['submitted'])){
+        // $_SESSION['name'] = $_POST['name'];  
+        // $_SESSION['phone']= $_POST['phone']; 
+        $_SESSION['state'] = $_POST['state'];  
+        $_SESSION['city'] = $_POST['city']; 
+        $_SESSION['price'] = $_POST['price'];  
+        $_SESSION['modulation'] = $_POST['modulation'];
+        $username = $_POST['name'];  
+    $phone = $_POST['phone'];
+    $state = $_POST['state'];  
+    $city = $_POST['city']; 
+    $price = $_POST['price'];  
+    $modulation = $_POST['modulation']; 
+    if(isset($username) && isset($phone)){
+
+        $sql = "INSERT INTO request (name,phone) values('$username','$phone')";  
+            $result = mysqli_query($con, $sql); 
+    }
+    header('Location: checkit.php');
+    }else{
+        //header('Location: checkit.php')
+        $state = $_SESSION['state'];  
+    $city = $_SESSION['city']; 
+    $price = $_SESSION['price'];  
+    $modulation = $_SESSION['modulation']; 
+    }
     // $username = $_POST['email'];  
     // $password = $_POST['password'];  
       
@@ -10,18 +36,18 @@
     //     $password = stripcslashes($password);  
     //     $username = mysqli_real_escape_string($con, $username);  
     //     $password = md5(mysqli_real_escape_string($con, $password));  
-    $username = $_POST['name'];  
-    $phone = $_POST['phone']; 
-    $state = $_POST['state'];  
-    $city = $_POST['city']; 
-    $price = $_POST['price'];  
-    $modulation = $_POST['modulation']; 
-if(isset($username) && isset($phone)){
+//     $username = $_POST['name'];  
+//     $phone = $_POST['phone']; 
+//     $state = $_POST['state'];  
+//     $city = $_POST['city']; 
+//     $price = $_POST['price'];  
+//     $modulation = $_POST['modulation']; 
+// if(isset($username) && isset($phone)){
 
-    $sql = "INSERT INTO request (name,phone) values('$username','$phone')";  
-        $result = mysqli_query($con, $sql); 
-}
-        $sql2 = "SELECT * from properties WHERE (price='$price' OR modulation = '$modulation') AND (state='$state' AND city='$city') ORDER BY price";  
+//     $sql = "INSERT INTO request (name,phone) values('$username','$phone')";  
+//         $result = mysqli_query($con, $sql); 
+// }
+        $sql2 = "SELECT * from properties WHERE (price='$price' AND modulation = '$modulation') AND (state='$state' AND city='$city') ORDER BY price";  
         $result2 = mysqli_query($con, $sql2);  
           
         $count = mysqli_num_rows($result2);  
@@ -45,6 +71,7 @@ if(isset($username) && isset($phone)){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Check Details </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <?php include 'head.php';?>
     <style>
         .class-container{
@@ -140,10 +167,12 @@ if(isset($username) && isset($phone)){
     <div class="class-row">
         <?php 
          if($count >= 1){  
-        while($row = mysqli_fetch_array($result2, MYSQLI_ASSOC)){ ?>
+            while($row = mysqli_fetch_array($result2, MYSQLI_ASSOC)){ 
+        ?>
         
             <div class="box">
-            <a href="Details.php">
+            <a href="Details.php?idd=<?php echo $row['id'] ?>">
+            <!-- <a > -->
             <!-- <img src="./assets/img/logo.png" alt=""> -->
             <img src="data:image/png;base64,<?php echo $row['images'] ?>" alt="">
             <h3 style="text-align:center"><?php echo $row['name'] ?></h3></br>
@@ -167,5 +196,31 @@ if(isset($username) && isset($phone)){
 </div>
 
 <?php include 'footer.php';?>
+<script>
+// $(document).ready(function(){
+//     // $(".box").bind('click', $.proxy(function(event) {
+//     //         var status = $(event.target).attr('id');
+//     //       alert(status);
+//     // }, this));
+//     $('.box').click(function(event) {
+//     var status = $(this).attr('id');
+//     //<?php //$_SESSION["boxId"] = ?>status;
+//     alert(status);
+//     // window.location = "./Details.php";
+//     $.ajax({
+//                 url: "Details.php",
+//                 type: "POST",
+//                 data: {
+//                     id: status
+//                 },
+//                 cache: false,
+//                 success: function(result){
+//                     window.location = "./Details.php";
+//                 }
+//             });
+    
+// });
+// });
+</script>
 </body>
 </html>

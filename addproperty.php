@@ -8,7 +8,7 @@ if (!isset($_SESSION["userId"])){
 }
 
 if( isset($_POST['submitted']) ){
-	echo '<script>alert("Welcome to Geeks for Geeks")</script>';
+	//echo '<script>alert("Welcome to Geeks for Geeks")</script>';
     $username = $_POST['name'];  
     $address = $_POST['address'];  
     $phone = $_POST['phone'];  
@@ -295,7 +295,7 @@ a{
 		</div>
         <label for="UploadPhotos" style=" margin-left:10px;">Upload Photos: </label>
 		<input type="file"  name="image" accept="image/*" required>
-  		<input type="submit" class="btn-upload" value="Upload">
+  		<!-- <input type="submit" class="btn-upload" value="Upload"> -->
 	</div>
 
 
