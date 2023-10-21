@@ -225,6 +225,16 @@ a{
 			<option value="No">No</option>
 		</select>
 	</div>
+		<div class="form-group input-group">
+    	<div class="input-group-prepend">
+        <span class="input-group-text"> <i class="fa fa-arrow-circle-right"></i> </span>
+		</div>
+        <label for="rooms" style=" margin-left:10px;">24X7 Entry: </label> 
+		<select class="form-control" name="entry">
+			<option value="Yes"> Yes</option>
+			<option value="No">No</option>
+		</select>
+	</div>
 
 	<div class="form-group input-group">
     	<div class="input-group-prepend">
