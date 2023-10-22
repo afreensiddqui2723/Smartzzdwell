@@ -84,6 +84,9 @@ flex-direction: column;
    padding: auto;
    
 }
+body, ul, li, p, a, label, input, div, h1, h2, h3, h4, h5, h6, p, a {
+    font-family: 'Playpen Sans', cursive !important;
+  }
 }
 </style>
 </head>

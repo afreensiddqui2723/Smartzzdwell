@@ -64,6 +64,9 @@ form .input-group{
 	margin-left: -70px;
 	width: 40vh;
 }
+body, ul, li, p, a, label, input, div, h1, h2, h3, h4, h5, h6, p, a {
+    font-family: 'Playpen Sans', cursive !important;
+  }
 form label{font-size: 14px !important;}
 form .form-control{font-size: 14px !important; }
 form .form-control input{font-size: 14px !important;
