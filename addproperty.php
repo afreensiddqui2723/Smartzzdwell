@@ -126,6 +126,19 @@ label{
 a{
 	color: #59ab6e !important;
 }
+@media (min-width: 200px) and (max-width: 700px) {
+form .input-group{
+	margin-left: -40px;
+	width: 50vh;
+}
+form label{font-size: 14px !important;}
+form .form-control{font-size: 14px !important; }
+form .form-control input{font-size: 14px !important;
+}
+}
+ @media (min-width: 700px) and (max-width: 2000px) {
+
+                }
 </style>
 
 
@@ -298,7 +311,7 @@ a{
 			<option value="Not furnished">Not furnished</option>
 		</select>
 	</div>
-  
+
 	<div class="form-group input-group">
     	<div class="input-group-prepend">
         <span class="input-group-text"> <i class="fa fa-arrow-circle-right"></i> </span>

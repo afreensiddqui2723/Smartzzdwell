@@ -18,7 +18,7 @@
 }
 
 .count-text {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: normal;
     margin-top: 10px;
     margin-bottom: 0;
@@ -31,6 +31,24 @@
     display: table;
     color: #156e2d;
 }
+.timer count-title count-number{
+	font-size: 12px;
+}
+
+@media (min-width: 200px) and (max-width: 700px) {
+	.counter {
+              width: 60vh;
+			  align-items: center;
+
+              }
+	.count-titlet{
+	font-size: 14px;
+}
+                }
+                /* @media (min-width: 700px) and (max-width: 2000px) {
+                  .resp{
+                  display: none;
+                } */
 </style>
 
 <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
@@ -64,7 +82,7 @@
                   <div class="counter">
       <i class="fa fa-map-marker fa-2x"></i>
       <h2 class="timer count-title count-number" data-to="22" data-speed="1500"></h2>
-      <p class="count-text ">Locations you can find us</p>
+      <p class="count-text ">Locations on we are</p>
     </div></div>
               <div class="col">
               <div class="counter">

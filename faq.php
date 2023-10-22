@@ -22,7 +22,7 @@ flex-direction: column;
 
 }
 .hr-line{
-  width: 60%;
+  width: 80%;
   margin: auto;
   
 }
@@ -32,7 +32,7 @@ flex-direction: column;
     color: #444;
     cursor: pointer;
     padding: 30px 20px;
-    width: 60%;
+    width: 90%;
     border: none;
     outline: none;
     transition: 0.4s;
@@ -42,7 +42,7 @@ flex-direction: column;
 .faq-body{
     margin: auto;
     /* text-align: center; */
-   width: 50%; 
+   width: 80%; 
    padding: auto;
    
 }
@@ -71,7 +71,21 @@ flex-direction: column;
 .active:after {
     content: "\2796";
     
-}</style>
+}
+
+@media (min-width: 200px) and (max-width: 700px) {
+    .faq-page {
+    
+    width: 80%;}
+    .faq-body{
+    margin: auto;
+    /* text-align: center; */
+   width: 90%; 
+   padding: auto;
+   
+}
+}
+</style>
 </head>
 
 <body>

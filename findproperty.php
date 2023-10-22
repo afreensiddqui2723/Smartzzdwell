@@ -59,6 +59,19 @@ label{
 .input-group-prepend{
     border: 1px solid black;
 }
+@media (min-width: 200px) and (max-width: 700px) {
+form .input-group{
+	margin-left: -40px;
+	width: 50vh;
+}
+form label{font-size: 14px !important;}
+form .form-control{font-size: 14px !important; }
+form .form-control input{font-size: 14px !important;
+}
+}
+ @media (min-width: 700px) and (max-width: 2000px) {
+
+                }
 </style>
 
 
@@ -137,7 +150,16 @@ label{
 			
 		</select>
 	</div>
-
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+        <span class="input-group-text"> <i class="fa fa-arrow-circle-right"></i> </span>
+		</div>
+        <label for="rooms" style=" margin-left:10px;">24X7 Entry: </label> 
+		<select class="form-control" name="entry">
+			<option value="Yes"> Yes</option>
+			<option value="No">No</option>
+		</select>
+	</div>
     <div class="form-group input-group">
     	<div class="input-group-prepend">
         <span class="input-group-text"> <i class="fa fa-arrow-circle-right"></i> </span>

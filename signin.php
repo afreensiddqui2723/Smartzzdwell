@@ -35,9 +35,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include 'stylecss.php';?>
 
+   
 <style>
-
-
+@media (min-width: 200px) and (max-width: 700px) {
+#formContent{
+  padding: 40px;
+  margin-top:60px;
+}
+#formFooter a{
+  font-size:12px;
+}
+}
+ @media (min-width: 700px) and (max-width: 2000px) {
+  #formContent{
+  padding: 40px;
+  margin-top:60px;
+}
+                }
 
 </style>
 <?php include 'head.php';?>
