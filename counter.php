@@ -37,7 +37,7 @@
 
 @media (min-width: 200px) and (max-width: 700px) {
 	.counter {
-              width: 50vh;
+              width: 45vh;
 			  align-items: center;
 
               }

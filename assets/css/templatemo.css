@@ -171,7 +171,7 @@ body, ul, li, p, a, label, input, div {
   .tempaltemo-carousel .h1 { font-size: 1em !important;
   }
   body, ul, li, p, a, label, input, div, h1, h2, h3, h4, h5, h6, p, a {
-    font-family: 'Playpen Sans', cursive !important;
+    font-family: 'Playpen Sans' !important;
   }
 }
 
@@ -179,7 +179,7 @@ body, ul, li, p, a, label, input, div {
 @media (min-width: 768px) {
   #templatemo_main_nav .navbar-nav {max-width: 450px;}
   body, ul, li, p, a, label, input, div, h1, h2, h3, h4, h5, h6, p, a {
-    font-family: 'Playpen Sans', cursive !important;
+    font-family: 'Playpen Sans' !important;
   }
  }
 
@@ -193,7 +193,7 @@ body, ul, li, p, a, label, input, div {
     height: 12px;
   }
   body, ul, li, p, a, label, input, div, h1, h2, h3, h4, h5, h6, p, a {
-    font-family: 'Playpen Sans', cursive !important;
+    font-family: 'Playpen Sans' !important;
   }
 }
 
