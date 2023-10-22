@@ -128,7 +128,7 @@ a{
 }
 @media (min-width: 200px) and (max-width: 700px) {
 form .input-group{
-	margin-right: 20px;
+	margin-left: -10px;
 	width: 50vh;
 }
 form label{font-size: 14px !important;}
