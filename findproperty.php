@@ -61,7 +61,7 @@ label{
 }
 @media (min-width: 200px) and (max-width: 700px) {
 form .input-group{
-	margin-left: -40px;
+	margin-left: -30px;
 	width: 50vh;
 }
 form label{font-size: 14px !important;}
