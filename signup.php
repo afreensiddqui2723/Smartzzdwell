@@ -52,9 +52,7 @@
 #formFooter a{
   font-size:12px;
 }
-body, ul, li, p, a, label, input, div, h1, h2, h3, h4, h5, h6, p, a {
-    font-family: 'Playpen Sans', cursive !important;
-  }
+
 }
  @media (min-width: 700px) and (max-width: 2000px) {
   #formContent{

@@ -30,22 +30,22 @@ Table of contents
 
 /* Typography */
 body, ul, li, p, a, label, input, div {
-  font-family: 'Playpen Sans', cursive !important;
+  font-family: 'Roboto', sans-serif;
   font-size: 18px ;
   font-weight: 300 ;
 }
 .h1 {
-  font-family: 'Playpen Sans', cursive !important;
+  font-family: 'Roboto', sans-serif;
   font-size: 48px;
   font-weight: 200 ;
 }
 .h2 {
-  font-family: 'Playpen Sans', cursive !important;
+  font-family: 'Roboto', sans-serif;
   font-size: 30px ;
   font-weight: 300;
 }
 .h3 {
-  font-family: 'Playpen Sans', cursive !important;
+  font-family: 'Roboto', sans-serif;
   font-size: 22px ;
 }
 /* General */
@@ -168,19 +168,12 @@ body, ul, li, p, a, label, input, div {
 }
 
 @media (min-width: 576px) {
-  .tempaltemo-carousel .h1 { font-size: 1em !important;
-  }
-  body, ul, li, p, a, label, input, div, h1, h2, h3, h4, h5, h6, p, a {
-    font-family: 'Playpen Sans' !important;
-  }
+  .tempaltemo-carousel .h1 { font-size: 1em !important;}
 }
 
 /*// Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
   #templatemo_main_nav .navbar-nav {max-width: 450px;}
-  body, ul, li, p, a, label, input, div, h1, h2, h3, h4, h5, h6, p, a {
-    font-family: 'Playpen Sans' !important;
-  }
  }
 
 /* Large devices (desktops, 992px and up)*/
@@ -192,14 +185,7 @@ body, ul, li, p, a, label, input, div {
     width: 12px;
     height: 12px;
   }
-  body, ul, li, p, a, label, input, div, h1, h2, h3, h4, h5, h6, p, a {
-    font-family: 'Playpen Sans' !important;
-  }
 }
 
 /* Extra large devices (large desktops, 1200px and up)*/
-@media (min-width: 1200px) {
-  body, ul, li, p, a, label, input, div, h1, h2, h3, h4, h5, h6, p, a {
-    font-family: 'Playpen Sans', cursive !important;
-  }
-}
+@media (min-width: 1200px) {}
