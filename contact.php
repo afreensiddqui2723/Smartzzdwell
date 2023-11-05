@@ -25,16 +25,16 @@
       </form>
   </div>
   <div class="col-md-4">
-    <b>Customer service:</b> <br />
-    Phone: +91 000 000 0000<br />
-    E-mail: <a href="mailto:support@mysite.com">smartzdwell@gmail.com</a><br />
+    <b>Inquiry:</b> <br />
+    Phone: +91 7817 833 477<br />
+    E-mail: <a href="mailto:support@mysite.com">info@smartzdwell.com</a><br />
     <br /><br />
     <b>Headquarter:</b><br />
     Company HK Litd, <br />
     25/F.168 Queen<br />
     District, Aligarh<br />
-    Phone: +000 000 0000<br />
-    <a href="mailto:usa@mysite.com">smartzdwell@gmail.com</a><br />
+    Phone: +91 7817 833 477<br />
+    <a href="mailto:usa@mysite.com">info@smartzdwell.com</a><br />
 
 
     <br /><br />
@@ -42,8 +42,8 @@
     Company HK Litd, <br />
     25/F.168 Queen<br />
     District, Aligarh<br />
-    Phone: +000 000 0000<br />
-    <a href="mailto:hk@mysite.com">smartzdwell@gmail.com</a><br />
+    Phone: +91 7817 833 477<br />
+    <a href="mailto:hk@mysite.com">info@smartzdwell.com</a><br />
 
 
   </div>

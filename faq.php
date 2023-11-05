@@ -14,6 +14,8 @@
 .faq-heading{
     border-bottom: #777;
     padding: 20px 60px;
+    text-decoration: underline;
+    text-transform: uppercase;
 }
 .faq-container{
 display: flex;
@@ -92,7 +94,7 @@ flex-direction: column;
 <body>
     <main>
 
-        <h1 class="faq-heading" style="text-align:center">Frequently asked questions---</h1>
+        <h2 class="faq-heading" style="text-align:center">Frequently asked questions---</h2>
         <section class="faq-container">
             <div class="faq-one">
 
@@ -100,9 +102,11 @@ flex-direction: column;
                 <h5 class="faq-page">What is smartzdwell</h5>
 
                 <div class="faq-body">
-                    <p>Demo data Demo data Demo dataDemo
-                         dataDemo data Demo dataDemo data Demo data Demo dataDemo dataDemo dataDemo data Demo data Demo dat.</p>
-                </div>
+                <p>At <u><b>Smartzwell</b></u> you will get budget friendly rooms starting from range Rs 1000/- Only with outstanding security. It is safe for girls as well so without any secont thought you can go for Smartzdwell services.</br></br>
+        As working professionals, students, bachelors, people who recently moved to a new city, or people who are just looking for their own place, we recognize that finding high-quality housing can be difficult. 
+        Using technology and design, <u><b>Smartzdwell</b></u> is the <b>"Managed Dwelling Rental Service"</b> with the quickest growth, striving to offer superior renting options.
+             We assist in locating and reserving preferred rental properties in Indian cities.                
+</p> </div>
             </div>
             <hr class="hr-line">
 
@@ -111,9 +115,9 @@ flex-direction: column;
                
                 <h5 class="faq-page">What makes us different</h5>
                 <div class="faq-body">
-                    <p>Demo data Demo data Demo dataDemo dataDemo 
-                        data Demo dataDemo data Demo data Demo dataDemo dataDemo dataDemo data Demo data Demo dat.</p>
-                </div>
+                    <p>We are here to provide you the most budget friendly PGs or rooms with high security.
+                        So you don't have to worry about safety also we are here to address your concerns if you have any.
+                    </p></div>
             </div>
             <hr class="hr-line">
 
@@ -123,9 +127,9 @@ flex-direction: column;
                 
 <h5 class="faq-page">The services you will never forget</h5>
                 <div class="faq-body">
-                    <p>Demo data Demo data Demo dataDemo 
-                        dataDemo data Demo dataDemo data Demo data Demo dataDemo dataDemo dataDemo data Demo data Demo dat.</p>
-                </div>
+                    <p>Our rental properties offer fully furnished, flexible stay options, 
+making it effortless to move in or out whenever you choose. Therefore, you can always rely on us to find you a home that fits your budget and lifestyle, whether you are a working professional who travels for work, a newcomer to the city.
+</p></div>
             </div>
 
         </section>

@@ -1,5 +1,20 @@
 
+<style>
+    h2{
+    font-size: 1.2rem !important;
+}
 
+li{
+    
+    font-size: 0.8rem !important;
+}
+
+li p{
+    line-height: 0.2rem !important;
+}
+
+
+</style>
    
     <footer class="bg-dark" id="tempaltemo_footer">
         <div class="container">
@@ -14,7 +29,7 @@
                         </li>
                         <li>
                             <i class="fa fa-phone fa-fw"></i>
-                            <a class="text-decoration-none" href="tel:010-020-0340">000000000</a>
+                            <a class="text-decoration-none" href="tel:010-020-0340"> +91 7817 833 477</a>
                         </li>
                         <li>
                             <i class="fa fa-envelope fa-fw"></i>
@@ -26,32 +41,26 @@
                 <div class="col-md-3 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">LOCATIONS</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">ALIGARH</a></li>
-                        <li><a class="text-decoration-none" href="#">DELHI</a></li>
-                        <li><a class="text-decoration-none" href="#">NOIDA</a></li>
-                        <li><a class="text-decoration-none" href="#">AGRA</a></li>
-                        <li><a class="text-decoration-none" href="#">LUCKNOW</a></li>
-                        <li><a class="text-decoration-none" href="#">MATHURA</a></li>
-                        <li><a class="text-decoration-none" href="#">KANPUR</a></li>
+                        <li><p>KASGANJ</p></li>
+                        <li><p>MATHURA</p></li>
+                        <li><p>KANPUR</p></li>
+                        <li><p>DELHI</p></li>
                     </ul>
                 </div>
                 <div class="col-md-3 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">LOCATIONS</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">ALIGARH</a></li>
-                        <li><a class="text-decoration-none" href="#">DELHI</a></li>
-                        <li><a class="text-decoration-none" href="#">NOIDA</a></li>
-                        <li><a class="text-decoration-none" href="#">AGRA</a></li>
-                        <li><a class="text-decoration-none" href="#">LUCKNOW</a></li>
-                        <li><a class="text-decoration-none" href="#">MATHURA</a></li>
-                        <li><a class="text-decoration-none" href="#">KANPUR</a></li>
+                        <li><p>ALIGARH</p></li>
+                        <li><p>DELHI</p></li>
+                        <li><p>NOIDA</p></li>
+                        <li><p>AGRA</p></li>
+                    
                     </ul>
                 </div>
 
                 <div class="col-md-3 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">QUICK ACCESS</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Home</a></li>
                         <li><a class="text-decoration-none" href="#">About</a></li>
                         <li><a class="text-decoration-none" href="#">TUTORIAL</a></li>
                         <li><a class="text-decoration-none" href="#">FAQs</a></li>
@@ -78,7 +87,7 @@
                             <a class="text-light text-decoration-none" target="_blank" href="#"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
                         </li>
                         <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="#"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
+                            <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/smartzdwell"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
                         </li>
                         <li class="list-inline-item border border-light rounded-circle text-center">
                             <a class="text-light text-decoration-none" target="_blank" href="#"><i class="fab fa-twitter fa-lg fa-fw"></i></a>

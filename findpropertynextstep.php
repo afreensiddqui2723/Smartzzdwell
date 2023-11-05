@@ -97,35 +97,60 @@ form .form-control input{font-size: 14px !important;
     </p> 
 	<form style="width: 50vw;" action="checkit.php" method="POST">
 	<input type='hidden' name='submitted' id='submitted' value='1'/>
-	
-
-
+	<div class="form-group input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+		 </div>
+        <input name="name" class="form-control" placeholder="Full name" type="text">
+    </div> <!-- form-group// -->
     
+
+
     <div class="form-group input-group">
     	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-arrow-circle-right"></i> </span>
+		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
 		</div>
-        <label for="home" style=" margin-left:10px;">State: </label>
-		<select class="form-control" name= "state" id="state-dropdown">
-		<option value="">Select State</option>
-		<option value="Uttar Pradesh"> Uttar Pradesh</option>
-			<option value="Madhya Pradesh">Madhya Pradesh</option>
-		</select>
-	</div>
+		
+    	<input name="phone" class="form-control" placeholder="Phone number" type="phone"> 
+    </div> <!-- form-group// -->
 
-	<div class="form-group input-group">
+    <div class="form-group input-group">
     	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-arrow-circle-right"></i> </span>
+        <span class="input-group-text"> <i class="fa fa-arrow-circle-right"></i> </span>
 		</div>
-        <label for="home" style=" margin-left:10px;">City: </label>
-		<select class="form-control" name= "city" id="city-dropdown">
-			<!-- <option>Aligarh</option>
-			<option>Delhi</option> -->
+        <label for="price" style=" margin-left:10px;">Select Price: </label>
+		<select class="form-control" name= "price">
+			<option value="Under ₹1,000">Under ₹1,000</option>
+            <option value="₹1,000 - ₹5,000">₹1,000 - ₹5,000</option>
+            <option value="₹5,000 - ₹10,000">₹5,000 - ₹10,000</option>
+            <option value="₹10,000 - ₹20,000">₹10,000 - ₹20,000</option>
+            <option value="Over ₹20,000">Over ₹20,000</option>
+			
 		</select>
 	</div>
-
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+        <span class="input-group-text"> <i class="fa fa-arrow-circle-right"></i> </span>
+		</div>
+        <label for="rooms" style=" margin-left:10px;">24X7 Entry: </label> 
+		<select class="form-control" name="entry">
+			<option value="Yes"> Yes</option>
+			<option value="No">No</option>
+		</select>
+	</div>
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+        <span class="input-group-text"> <i class="fa fa-arrow-circle-right"></i> </span>
+		</div>
+        <label for="furnished" style=" margin-left:10px;">Modulation: </label>
+		<select class="form-control" name= "modulation">
+			<option value="Furnished">Furnished</option>
+            <option value="Semi furnished">Semi furnished</option>
+			<option value="Not furnished">Not furnished</option>
+		</select>
+	</div>
     <div class="form-group"> 
-        <button type="submit" class="btn btn-success btn-block"> Check Property </button>
+        <button type="submit" class="btn btn-success btn-block"> Find Property </button>
     </div> <!-- form-group// -->      
                                                                  
 </form>
