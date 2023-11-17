@@ -6,6 +6,25 @@ if (!isset($_SESSION["userId"])){
 	$_SESSION["url"] = $actual_link;
 	header("Location: signin.php");
 }
+// Compress image
+function compressImage($source, $destination, $quality) {
+
+	$info = getimagesize($source);
+	//echo '<script>console.log('$info')</script>';
+  
+	if ($info['mime'] == 'image/jpeg') 
+	  $image = imagecreatefromjpeg($source);
+  
+	elseif ($info['mime'] == 'image/gif') 
+	  $image = imagecreatefromgif($source);
+  
+	elseif ($info['mime'] == 'image/png') 
+	  $image = imagecreatefrompng($source);
+  
+	imagejpeg($image, $destination, $quality);
+	echo '<script>alert("function call")</script>'; 
+  
+  }
 
 if( isset($_POST['submitted']) ){
 	//echo '<script>alert("Welcome to Geeks for Geeks")</script>';
@@ -17,6 +36,7 @@ if( isset($_POST['submitted']) ){
     $city = $_POST['city'];  
     $rooms = $_POST['rooms'];  
     $girls = $_POST['girls'];  
+	$entry = $_POST['entry'];
     $price = $_POST['price'];  
     $kitchen = $_POST['kitchen'];  
     $hall = $_POST['hall'];  
@@ -39,18 +59,46 @@ if( isset($_POST['submitted']) ){
 	$error[] = 'Sorry, your image is too large. Upload less than 5 MB in size.';
 	echo 'Sorry, your image is too large. Upload less than 5 MB in size.';
 	}
+	// Getting file name
+	// $filename = $_FILES['imagefile']['name'];
+ 
+	// Valid extension
+	$valid_ext = array('png','jpeg','jpg');
+  
+	// Location
+	$location = "images/".$image_file;
+  
+	// file extension
+	$file_extension = pathinfo($location, PATHINFO_EXTENSION);
+	$file_extension = strtolower($file_extension);
+  
+	// Check extension
+	if(in_array($file_extension,$valid_ext)){
+  
+	  // Compress Image
+	  compressImage($file,$location,60);
+  
+	}else{
+	  echo "Invalid file type.";
+	}
 	if(!isset($error))
 	{
 		$img = file_get_contents($file);
+		// $img2 = imagescale($img,60);
 		$imageData = base64_encode($img);
+
+		// $image = ImageResize::createFromString(base64_decode($imageData));
+		// $image->scale(50);
+		// //$image->save('image.jpg');
+		// $imageData = base64_encode($image);
       
         //to prevent from mysqli injection  
        
 		$sql = "INSERT INTO properties (name, address, phone, homeType, state, city, noOfRooms, 
-		girls, price, kitchen, hall, parking, modulation, images) VALUES 
+		girls, entry, price, kitchen, hall, parking, modulation, images) VALUES 
 		('$username','$address','$phone','$homeType','$state','$city','$rooms',
-		'$girls','$price','$kitchen','$hall','$parking','$modulation', '$imageData')";  
-		$result = mysqli_query($con, $sql);  
+		'$girls', '$entry','$price','$kitchen','$hall','$parking','$modulation', '$imageData')";  
+		//$result = mysqli_query($con, $sql);  
 		// $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
 		// $count = mysqli_num_rows($result);  
 		  
@@ -63,6 +111,7 @@ if( isset($_POST['submitted']) ){
        
 	}
 }
+
 ?>
 
 <html>
