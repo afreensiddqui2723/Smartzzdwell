@@ -2,15 +2,31 @@
     include('dbconn.php'); 
     session_start(); 
     if( isset($_POST['submitted']) ){
-    $username = $_POST['email'];  
+    $otp = $_POST['otp'];  
     $password = $_POST['password'];  
+    $cpassword = $_POST['cpassword'];  
       
         //to prevent from mysqli injection  
-        $username = stripcslashes($username);  
+        // $username = stripcslashes($username);  
         $password = stripcslashes($password);  
-        $username = mysqli_real_escape_string($con, $username);  
+        // $username = mysqli_real_escape_string($con, $username);  
         $password = md5(mysqli_real_escape_string($con, $password));  
       
+        if($_SESSION['otp']== $otp){
+          if($password==$cpassword){
+            $sql = "UPDATE users SET password='$password' WHERE email='$_SESSION['resetEmail']'";  
+            $result = mysqli_query($con, $sql);
+            if($result){
+              echo "<h1> Password Reset Successfull</h1>";
+            }
+          }
+          else{
+            echo "<h1> Password Not Match</h1>"; 
+          }
+        }
+        else{
+          echo "<h1> Invalid OTP</h1>"; 
+        }
         $sql = "select * from users where email = '$username' and password = '$password'";  
         $result = mysqli_query($con, $sql);  
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
@@ -70,16 +86,14 @@
     </div>
 
     <form action="" method="POST">
-      <input type="email" id="login" class="fadeIn second" name="email" placeholder="Enter Email" required>
-      <input type="password" id="password" class="fadeIn third" name="password" placeholder="password" required>
-      <input type="submit" class="fadeIn fourth" name="submitted" value="Sign In" style="margin-top:10px">
+      <input type="text" id="otp" class="fadeIn second" name="otp" placeholder="Enter OTP" required>
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password" required>
+      <input type="password" id="password" class="fadeIn third" name="cpassword" placeholder="Confirm Password" required>
+     
+      <input type="submit" class="fadeIn fourth" name="submitted" value="Submit" style="margin-top:10px">
       
     </form>
 
-    <div id="formFooter">
-    <a class="underlineHover" href="signup.php" style="color: #000">Need an account? Sign Up</a><br/>
-      <a class="underlineHover" href="forgotpassword.php" style="color: #000">Forgot Password?</a>
-    </div>
 
   </div>
 </div> 

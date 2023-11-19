@@ -3,28 +3,37 @@
     session_start(); 
     if( isset($_POST['submitted']) ){
     $username = $_POST['email'];  
-    $password = $_POST['password'];  
+    // $password = $_POST['password'];  
       
         //to prevent from mysqli injection  
         $username = stripcslashes($username);  
-        $password = stripcslashes($password);  
+        // $password = stripcslashes($password);  
         $username = mysqli_real_escape_string($con, $username);  
-        $password = md5(mysqli_real_escape_string($con, $password));  
-      
-        $sql = "select * from users where email = '$username' and password = '$password'";  
+        // $password = md5(mysqli_real_escape_string($con, $password));  
+        $otp = mt_rand(100000,999999); 
+        
+        $sql = "select * from users where email = '$username'";  
         $result = mysqli_query($con, $sql);  
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
         $count = mysqli_num_rows($result);  
           
         if($count == 1){  
             // echo "<h1><center> Login successful </center></h1>"; 
-            $_SESSION["userId"] = $row['id'];
-            if(isset($_SESSION["url"]))
-            header("Location: " . $_SESSION["url"]);
+            $to = "khalidsaif9045@gmail.com";
+$subject = "Password Reset OTP";
+$txt = "Greetings from Smartzdwell, Your OTP to reset password is". $otp;;
+$headers = "From: support@smartzdwell.com" . "\r\n";
+
+mail($to,$subject,$txt,$headers);
+            $_SESSION["otp"] = $otp;
+            $_SESSION["resetEmail"] = $username;
+            header("Location: " . "setpassword.php");
+            // if(isset($_SESSION["url"]))
+            // header("Location: " . $_SESSION["url"]);
 
         }  
         else{  
-            echo "<h1> Login failed. Invalid username or password.</h1>";  
+            echo "<h1> Server Error, Please Try again later.</h1>";  
         } 
       }    
 ?>
@@ -71,15 +80,11 @@
 
     <form action="" method="POST">
       <input type="email" id="login" class="fadeIn second" name="email" placeholder="Enter Email" required>
-      <input type="password" id="password" class="fadeIn third" name="password" placeholder="password" required>
-      <input type="submit" class="fadeIn fourth" name="submitted" value="Sign In" style="margin-top:10px">
+      <input type="submit" class="fadeIn fourth" name="submitted" value="Send Code" style="margin-top:10px">
       
     </form>
 
-    <div id="formFooter">
-    <a class="underlineHover" href="signup.php" style="color: #000">Need an account? Sign Up</a><br/>
-      <a class="underlineHover" href="forgotpassword.php" style="color: #000">Forgot Password?</a>
-    </div>
+    
 
   </div>
 </div> 

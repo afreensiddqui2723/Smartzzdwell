@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html><head>
 <style>
 .dropdown .dropdown-menu {
@@ -96,10 +99,13 @@ a {
                         <li class="nav-item">
                             <a class="nav-link" href="contact.php">Contact</a>
                         </li>
-
+                        <?php
+                        if (isset($_SESSION["userId"])){
+                        ?>
                         <li class="nav-item">
                         <a class="nav-link" href="logout.php">LogOut</a>
                         </li>
+                        <?php } ?>
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">

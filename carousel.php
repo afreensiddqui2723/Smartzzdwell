@@ -80,7 +80,7 @@ body {
               
                   <div class="swiper-slide">
                     <div class="slide-inner">
-                    <img src="assets/img/banner.png" >
+                    <img src="assets/img/banner1.jpeg" >
                     </div>
                   </div>
                   <div class="swiper-slide">
