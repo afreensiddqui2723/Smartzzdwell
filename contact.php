@@ -1,3 +1,19 @@
+<?php
+include('dbconn.php'); 
+session_start(); 
+if( isset($_POST['submitted']) ){
+  $name = $_POST['name']; 
+  $email = $_POST['email']; 
+  $phone = $_POST['phone']; 
+  $message = $_POST['message']; 
+  $to = "support@smartzdwell.com";
+  $subject = "Contact us Query";
+  $txt = "New Query\n Name: ". $name."\nEmail: ".$email."\nPhone: ".$phone."\nMessage: ".$message;
+  $headers = "From: support@smartzdwell.com" . "\r\n";
+  
+  mail($to,$subject,$txt,$headers);
+}
+?>
 <html lang="en">
     <head>
 <?php include 'head.php';?>
@@ -16,12 +32,12 @@
 
 <div class="row">
   <div class="col-md-8">
-      <form action="/post" method="post">
+      <form action="" method="post">
         <input class="form-control" name="name" placeholder="Name..." /><br />
         <input class="form-control" name="phone" placeholder="Phone..." /><br />
         <input class="form-control" name="email" placeholder="E-mail..." /><br />
-        <textarea class="form-control" name="text" placeholder="How can we help you?" style="height:150px;"></textarea><br />
-        <input class="btn btn-primary" type="submit" value="Send" /><br /><br />
+        <textarea class="form-control" name="message" placeholder="How can we help you?" style="height:150px;"></textarea><br />
+        <input class="btn btn-primary" type="submit" name="submitted" value="Send" /><br /><br />
       </form>
   </div>
   <div class="col-md-4">
