@@ -19,7 +19,7 @@
           
         if($count == 1){  
             // echo "<h1><center> Login successful </center></h1>"; 
-            $to = "khalidsaif9045@gmail.com";
+            $to = $username;
 $subject = "Password Reset OTP";
 $txt = "Greetings from Smartzdwell, Your OTP to reset password is". $otp;;
 $headers = "From: support@smartzdwell.com" . "\r\n";

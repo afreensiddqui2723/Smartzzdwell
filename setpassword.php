@@ -4,7 +4,8 @@
     if( isset($_POST['submitted']) ){
     $otp = $_POST['otp'];  
     $password = $_POST['password'];  
-    $cpassword = $_POST['cpassword'];  
+    $cpassword = $_POST['cpassword'];
+    $resetemail = $_SESSION['resetemail'];
       
         //to prevent from mysqli injection  
         // $username = stripcslashes($username);  
@@ -14,7 +15,7 @@
       
         if($_SESSION['otp']== $otp){
           if($password==$cpassword){
-            $sql = "UPDATE users SET password='$password' WHERE email='$_SESSION['resetEmail']'";  
+            $sql = "UPDATE users SET password='$password' WHERE email='$resetemail'";  
             $result = mysqli_query($con, $sql);
             if($result){
               echo "<h1> Password Reset Successfull</h1>";
@@ -27,21 +28,21 @@
         else{
           echo "<h1> Invalid OTP</h1>"; 
         }
-        $sql = "select * from users where email = '$username' and password = '$password'";  
-        $result = mysqli_query($con, $sql);  
-        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
-        $count = mysqli_num_rows($result);  
+        // $sql = "select * from users where email = '$username' and password = '$password'";  
+        // $result = mysqli_query($con, $sql);  
+        // $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
+        // $count = mysqli_num_rows($result);  q
           
-        if($count == 1){  
-            // echo "<h1><center> Login successful </center></h1>"; 
-            $_SESSION["userId"] = $row['id'];
-            if(isset($_SESSION["url"]))
-            header("Location: " . $_SESSION["url"]);
+        // if($count == 1){  
+        //     // echo "<h1><center> Login successful </center></h1>"; 
+        //     $_SESSION["userId"] = $row['id'];
+        //     if(isset($_SESSION["url"]))
+        //     header("Location: " . $_SESSION["url"]);
 
-        }  
-        else{  
-            echo "<h1> Login failed. Invalid username or password.</h1>";  
-        } 
+        // }  
+        // else{  
+        //     echo "<h1> Login failed. Invalid username or password.</h1>";  
+        // } 
       }    
 ?>
 <!DOCTYPE html>
