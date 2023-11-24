@@ -3,7 +3,8 @@
     session_start(); 
     if( isset($_POST['submitted']) ){
     $username = $_POST['email'];  
-    $password = $_POST['password'];  
+    $password = $_POST['password']; 
+    $flag = false; 
       
         //to prevent from mysqli injection  
         $username = stripcslashes($username);  
@@ -24,7 +25,22 @@
 
         }  
         else{  
-            echo "<h1> Login failed. Invalid username or password.</h1>";  
+            // echo "<h1> Login failed. Invalid username or password.</h1>"; 
+        //     echo '<script type="text/javascript">
+        //     $(document).ready(function() {
+        //         swal({
+        //     title: "Login failed!",
+        //     text: "Invalid username or password.",
+        //     icon: "success",
+        //     button: "Ok",
+        //     timer: 2000
+        // });
+        //     });
+        // </script>';
+        // include('swal.php');
+        // echo '<script>alert("Email Already Exist")</script>'; 
+        // swal("hello", "testing","success"); 
+        $flag = true;
         } 
       }    
 ?>
@@ -83,7 +99,22 @@
 
   </div>
 </div> 
-
+<?php
+if($flag){
+  echo '<script type="text/javascript">
+  $(document).ready(function() {
+      swal({
+  title: "Login failed!",
+  text: "Invalid username or password.",
+  icon: "error",
+  button: "Ok",
+  timer: 5000
+ });
+  });
+ </script>';
+}
+ 
+?>
 <?php include 'footer.php';?>
 </body>
 </html>

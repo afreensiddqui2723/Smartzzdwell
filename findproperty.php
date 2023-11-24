@@ -95,7 +95,7 @@ form .form-control input{font-size: 14px !important;
 	<p class="divider-text">
         <span class="bg-light">Find property</span>
     </p> 
-	<form style="width: 50vw;" action="checkit.php" method="POST">
+	<form style="width: 50vw;" action="findpropertynextstep.php" method="POST">
 	<input type='hidden' name='submitted' id='submitted' value='1'/>
 	
 

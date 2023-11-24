@@ -1,5 +1,20 @@
 <?php
 session_start();
+if(!empty($_POST['submitted'])){
+    $_SESSION['state'] = $_POST['state'];  
+    $_SESSION['city'] = $_POST['city']; 
+    $state = $_SESSION['state'];  
+    $city = $_SESSION['city']; 
+    $flag = false;
+    $sql2 = "SELECT * from properties WHERE (state='$state' AND city='$city')";  
+        $result2 = mysqli_query($con, $sql2);  
+          
+        $count = mysqli_num_rows($result2);
+        if($count<=0){
+            $flag = true;
+        }
+
+}
 // if (!isset($_SESSION["userId"])){
 // 	$actual_link = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 // 	$_SESSION["url"] = $actual_link;
@@ -159,7 +174,24 @@ form .form-control input{font-size: 14px !important;
 
 </div> 
 <!--container end.//-->
-
+<?php
+if($flag){
+    echo '<script type="text/javascript">
+    $(document).ready(function() {
+        swal({
+    title: "No Properties!",
+    text: "Sorry No Properties Exist. Kindly try later.",
+    icon: "error",
+    button: "Ok",
+    timer: 5000
+   });
+    });
+    window.setTimeout(function(){
+        window.location="findproperty.php";
+      }, 5000);
+   </script>';
+  }
+?>
 <br><br><?php include 'footer.php';?>
 <script>
 	$(document).ready(function() {

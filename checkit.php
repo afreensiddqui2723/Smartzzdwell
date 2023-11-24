@@ -5,14 +5,14 @@
     if(!empty($_POST['submitted'])){
         // $_SESSION['name'] = $_POST['name'];  
         // $_SESSION['phone']= $_POST['phone']; 
-        $_SESSION['state'] = $_POST['state'];  
-        $_SESSION['city'] = $_POST['city']; 
+        // $_SESSION['state'] = $_POST['state'];  
+        // $_SESSION['city'] = $_POST['city']; 
         $_SESSION['price'] = $_POST['price'];  
         $_SESSION['modulation'] = $_POST['modulation'];
         $username = $_POST['name'];  
     $phone = $_POST['phone'];
-    $state = $_POST['state'];  
-    $city = $_POST['city']; 
+    $state = $_SESSION['state'];  
+    $city = $_SESSION['city']; 
     $price = $_POST['price'];  
     $modulation = $_POST['modulation']; 
     if(isset($username) && isset($phone)){

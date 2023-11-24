@@ -2,7 +2,10 @@
 <?php      
    if( isset($_POST['submitted']) ){
     $username = $_POST['email'];  
-    $password = $_POST['password'];  
+    $password = $_POST['password'];
+    $flag = false;   
+    $flag2 = false;   
+    $flag3 = false;   
       
         //to prevent from mysqli injection  
         $username = stripcslashes($username);  
@@ -14,24 +17,29 @@
         $result2 = mysqli_query($con, $sql2);  
         $count = mysqli_num_rows($result2); 
         if($count >= 1){
-          echo '<script>alert("Email Already Exist")</script>'; 
+          $flag = true;
+          // echo '<script>alert("Email Already Exist")</script>'; 
         }else{
           $sql = "INSERT INTO users (email,password) values('$username','$password')";  
           $result = mysqli_query($con, $sql);  
+          if($result){ 
+            // alertjava();
+            $flag2 = true; 
+            // echo '<script>alert("Register Successfully")</script>'; 
+            // if(isset($_SESSION["url"]))
+            //   header("Location: " . $_SESSION["url"]);
+            // else
+            // header("Location: signin.php");
+          }  
+          else{  
+            $flag3 = true;
+            // echo '<script>alert(Error, Please try again)</script>';  
+          } 
         }
         // $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
         // $count = mysqli_num_rows($result);  
           
-        if($result){  
-          echo '<script>alert("Register Successfully")</script>'; 
-          if(isset($_SESSION["url"]))
-            header("Location: " . $_SESSION["url"]);
-          else
-          header("Location: signin.php");
-        }  
-        else{  
-          echo '<script>alert(Error, Please try again)</script>';  
-        } 
+        
    }
        
 ?>
@@ -92,7 +100,62 @@
 
   </div>
 </div> 
+<?php
+if($flag){
+  echo '<script type="text/javascript">
+  $(document).ready(function() {
+      swal({
+  title: "Signup failed!",
+  text: "Email Already Exist.",
+  icon: "error",
+  button: "Ok",
+  timer: 5000
+ });
+  });
+ </script>';
+}
+if($flag2){
+  echo '<script type="text/javascript">
+  $(document).ready(function() {
+      swal({
+  title: "Signup Success!",
+  text: "Registered Successfully",
+  icon: "success",
+  button: "Ok",
+  timer: 5000
+ });
+  });
+  window.setTimeout(function(){
+  window.location="signin.php";
+}, 5000);
+ </script>';
+      // if(isset($_SESSION["url"]))
+      // {
 
+      // }
+      // else{
+      //   echo '<script type="text/javascript">window.location="signin.php"</script>';
+      // }
+              // header("Location: " . $_SESSION["url"]);
+            // else
+            // echo '<script type="text/javascript">window.location="signin.php"</script>'
+            // header("Location: signin.php");
+}
+if($flag3){
+  echo '<script type="text/javascript">
+  $(document).ready(function() {
+      swal({
+  title: "Signup failed!",
+  text: "Error, Please try again",
+  icon: "error",
+  button: "Ok",
+  timer: 5000
+ });
+  });
+ </script>';
+}
+ 
+?>
 <?php include 'footer.php';?>
 </body>
 </html>
