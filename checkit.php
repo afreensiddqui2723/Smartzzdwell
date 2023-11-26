@@ -171,10 +171,10 @@
         ?>
         
             <div class="box">
-            <a href="Details.php?idd=<?php echo $row['id'] ?>">
+            <a href="Details.php?idd=<?php echo $row['id']; ?>">
             <!-- <a > -->
-            <!-- <img src="./assets/img/logo.png" alt=""> -->
-            <img src="data:image/png;base64,<?php echo $row['images'] ?>" alt="">
+            <img src="images/<?php echo $row['images']; ?>" alt="">
+            <!-- <img src="data:image/png;base64,<?php //echo $row['images'] ?>" alt=""> -->
             <h3 style="text-align:center"><?php echo $row['name'] ?></h3></br>
             <h4><?php echo $row['price'] ?></h4>
             <hr>

@@ -114,7 +114,8 @@
 <div class="class-container">
     <div class="class-row">
         <div class="box">
-            <img src="data:image/png;base64,<?php echo $row['images'] ?>" alt=""> 
+            <!-- <img src="data:image/png;base64,<?php //echo $row['images'] ?>" alt="">  -->
+            <img src="images/<?php echo $row['images']; ?>" alt="">
     </div>
     <div class="box2">
             <h3 style="text-align:center"><?php echo $row['name'] ?></h3></br>
