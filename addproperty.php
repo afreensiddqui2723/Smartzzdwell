@@ -301,13 +301,7 @@ form .form-control input{font-size: 14px !important;
 <?php include 'header.php';?>
 <body>
 	<!-- Status message -->
-<?php echo $statusMsg; ?>
 
-<!-- <?php if(!empty($compressedImage)){ ?>
-    <p><b>Original Image Size:</b> <?php echo $imageSize; ?></p>
-    <p><b>Compressed Image Size:</b> <?php echo $compressedImageSize; ?></p>
-    <img src="<?php echo $compressedImage; ?>"/>
-<?php } ?> -->
 <div class="container">
 <div class="card bg-light">
 <article class="card-body mx-auto" style="max-width: 600px;">
