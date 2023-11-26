@@ -47,7 +47,19 @@ function compressImage($source, $destination, $quality) {
      
     // Save image 
     imagejpeg($image, $destination, $quality); 
-     
+	$sql = "INSERT INTO properties (name, address, phone, homeType, state, city, noOfRooms, girls, entry, price, kitchen, hall, parking, modulation, images) VALUES ('$username','$address','$phone','$homeType','$state','$city','$rooms','$girls', '$entry','$price','$kitchen','$hall','$parking','$modulation', '$imageFile')";  
+	$result = mysqli_query($con, $sql);  
+	//  $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
+	//  $count = mysqli_num_rows($result);  
+	 echo '<script>alert("Property Added Successfully")</script>'; 
+		if($result){  
+			$flag = true;
+			// echo '<script>alert("Property Added Successfully")</script>'; 
+		}  
+		else{  
+			$flag2 = true;
+			// echo '<script>alert(Error, Please try again)</script>';  
+		} 
     // Return compressed image 
     return $destination; 
 }
@@ -97,19 +109,7 @@ if( isset($_POST['submitted']) ){
              
             // Compress size and upload image 
             $compressedImage = compressImage($imageTemp, $imageUploadPath, 60); 
-			$sql = "INSERT INTO properties (name, address, phone, homeType, state, city, noOfRooms, girls, entry, price, kitchen, hall, parking, modulation, images) VALUES ('$username','$address','$phone','$homeType','$state','$city','$rooms','$girls', '$entry','$price','$kitchen','$hall','$parking','$modulation', '$imageFile')";  
-	   $result = mysqli_query($con, $sql);  
-		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
-		$count = mysqli_num_rows($result);  
-		echo '<script>alert("Property Added Successfully")</script>'; 
-		   if($result){  
-			   $flag = true;
-			   // echo '<script>alert("Property Added Successfully")</script>'; 
-		   }  
-		   else{  
-			   $flag2 = true;
-			   // echo '<script>alert(Error, Please try again)</script>';  
-		   } 
+			
             if($compressedImage){ 
                 $compressedImageSize = filesize($compressedImage); 
                 $compressedImageSize = convert_filesize($compressedImageSize); 
