@@ -7,43 +7,110 @@ if (!isset($_SESSION["userId"])){
 	header("Location: signin.php");
 }
 // Compress image
-function compressImage($source, $destination, $quality) {
+// function compressImage($source, $destination, $quality) {
 
-	$info = getimagesize($source);
-	//echo '<script>console.log('$info')</script>';
+// 	$info = getimagesize($source);
+// 	//echo '<script>console.log('$info')</script>';
   
-	if ($info['mime'] == 'image/jpeg') 
-	  $image = imagecreatefromjpeg($source);
+// 	if ($info['mime'] == 'image/jpeg') 
+// 	  $image = imagecreatefromjpeg($source);
   
-	elseif ($info['mime'] == 'image/gif') 
-	  $image = imagecreatefromgif($source);
+// 	elseif ($info['mime'] == 'image/gif') 
+// 	  $image = imagecreatefromgif($source);
   
-	elseif ($info['mime'] == 'image/png') 
-	  $image = imagecreatefrompng($source);
+// 	elseif ($info['mime'] == 'image/png') 
+// 	  $image = imagecreatefrompng($source);
   
-	imagejpeg($image, $destination, $quality);
-	echo '<script>alert("function call")</script>'; 
+// 	imagejpeg($image, $destination, $quality);
+// 	echo '<script>alert("function call")</script>'; 
   
-  }
+//   }
+function compressImage($source, $destination, $quality) { 
+    // Get image info 
+    $imgInfo = getimagesize($source); 
+    $mime = $imgInfo['mime']; 
+     
+    // Create a new image from file 
+    switch($mime){ 
+        case 'image/jpeg': 
+            $image = imagecreatefromjpeg($source); 
+            break; 
+        case 'image/png': 
+            $image = imagecreatefrompng($source); 
+            break; 
+        case 'image/gif': 
+            $image = imagecreatefromgif($source); 
+            break; 
+        default: 
+            $image = imagecreatefromjpeg($source); 
+    } 
+     
+    // Save image 
+    imagejpeg($image, $destination, $quality); 
+     
+    // Return compressed image 
+    return $destination; 
+}
+function convert_filesize($bytes, $decimals = 2) { 
+    $size = array('B','KB','MB','GB','TB','PB','EB','ZB','YB'); 
+    $factor = floor((strlen($bytes) - 1) / 3); 
+    return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor]; 
+}
+$uploadPath = "images/"; 
+ 
+$statusMsg = ''; 
+$status = 'danger'; 
 
 if( isset($_POST['submitted']) ){
+	// Check whether user inputs are empty 
+    if(!empty($_FILES["image"]["name"])) { 
+        // File info 
+        $fileName = basename($_FILES["image"]["name"]); 
+        $imageUploadPath = $uploadPath . $fileName; 
+        $fileType = pathinfo($imageUploadPath, PATHINFO_EXTENSION); 
+         
+        // Allow certain file formats 
+        $allowTypes = array('jpg','png','jpeg','gif'); 
+        if(in_array($fileType, $allowTypes)){ 
+            // Image temp source and size 
+            $imageTemp = $_FILES["image"]["tmp_name"]; 
+            $imageSize = convert_filesize($_FILES["image"]["size"]); 
+             
+            // Compress size and upload image 
+            $compressedImage = compressImage($imageTemp, $imageUploadPath, 75); 
+             
+            if($compressedImage){ 
+                $compressedImageSize = filesize($compressedImage); 
+                $compressedImageSize = convert_filesize($compressedImageSize); 
+                 
+                $status = 'success'; 
+                $statusMsg = "Image compressed successfully."; 
+            }else{ 
+                $statusMsg = "Image compress failed!"; 
+            } 
+        }else{ 
+            $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.'; 
+        } 
+    }else{ 
+        $statusMsg = 'Please select an image file to upload.'; 
+    } 
 	//echo '<script>alert("Welcome to Geeks for Geeks")</script>';
-    $username = $_POST['name'];  
-    $address = $_POST['address'];  
-    $phone = $_POST['phone'];  
-    $homeType = $_POST['homeType'];  
-    $state = $_POST['state'];  
-    $city = $_POST['city'];  
-    $rooms = $_POST['rooms'];  
-    $girls = $_POST['girls'];  
-	$entry = $_POST['entry'];
-    $price = $_POST['price'];  
-    $kitchen = $_POST['kitchen'];  
-    $hall = $_POST['hall'];  
-    $parking = $_POST['parking'];  
-    $modulation = $_POST['modulation'];  
-    $image_file=$_FILES['image']['name'];
-	$file = $_FILES['image']['tmp_name'];
+    // $username = $_POST['name'];  
+    // $address = $_POST['address'];  
+    // $phone = $_POST['phone'];  
+    // $homeType = $_POST['homeType'];  
+    // $state = $_POST['state'];  
+    // $city = $_POST['city'];  
+    // $rooms = $_POST['rooms'];  
+    // $girls = $_POST['girls'];  
+	// $entry = $_POST['entry'];
+    // $price = $_POST['price'];  
+    // $kitchen = $_POST['kitchen'];  
+    // $hall = $_POST['hall'];  
+    // $parking = $_POST['parking'];  
+    // $modulation = $_POST['modulation'];  
+    // $image_file=$_FILES['image']['name'];
+	// $file = $_FILES['image']['tmp_name'];
  	// $path = $folder . $image_file;  
  	//$target_file=$folder.basename($image_file);
  	//$imageFileType=pathinfo($target_file,PATHINFO_EXTENSION);
@@ -55,61 +122,61 @@ if( isset($_POST['submitted']) ){
 	// }
 	//Set image upload size 
 	
-		if ($_FILES["image"]["size"] > 5048576) {
-	$error[] = 'Sorry, your image is too large. Upload less than 5 MB in size.';
-	echo 'Sorry, your image is too large. Upload less than 5 MB in size.';
-	}
+	// 	if ($_FILES["image"]["size"] > 5048576) {
+	// $error[] = 'Sorry, your image is too large. Upload less than 5 MB in size.';
+	// echo 'Sorry, your image is too large. Upload less than 5 MB in size.';
+	// }
 	// Getting file name
 	// $filename = $_FILES['imagefile']['name'];
  
 	// Valid extension
-	$valid_ext = array('png','jpeg','jpg');
+	// $valid_ext = array('png','jpeg','jpg');
   
-	// Location
-	$location = "images/".$image_file;
+	// // Location
+	// $location = "images/".$image_file;
   
-	// file extension
-	$file_extension = pathinfo($location, PATHINFO_EXTENSION);
-	$file_extension = strtolower($file_extension);
+	// // file extension
+	// $file_extension = pathinfo($location, PATHINFO_EXTENSION);
+	// $file_extension = strtolower($file_extension);
   
-	// Check extension
-	if(in_array($file_extension,$valid_ext)){
+	// // Check extension
+	// if(in_array($file_extension,$valid_ext)){
   
-	  // Compress Image
-	  compressImage($file,$location,60);
+	//   // Compress Image
+	//   compressImage($file,$location,60);
   
-	}else{
-	  echo "Invalid file type.";
-	}
-	if(!isset($error))
-	{
-		$img = file_get_contents($file);
-		// $img2 = imagescale($img,60);
-		$imageData = base64_encode($img);
+	// }else{
+	//   echo "Invalid file type.";
+	// }
+	// if(!isset($error))
+	// {
+	// 	// $img = file_get_contents($file);
+	// 	// // $img2 = imagescale($img,60);
+	// 	// $imageData = base64_encode($img);
 
-		// $image = ImageResize::createFromString(base64_decode($imageData));
-		// $image->scale(50);
-		// //$image->save('image.jpg');
-		// $imageData = base64_encode($image);
+	// 	// $image = ImageResize::createFromString(base64_decode($imageData));
+	// 	// $image->scale(50);
+	// 	// //$image->save('image.jpg');
+	// 	// $imageData = base64_encode($image);
       
-        //to prevent from mysqli injection  
+    //     //to prevent from mysqli injection  
        
-		$sql = "INSERT INTO properties (name, address, phone, homeType, state, city, noOfRooms, 
-		girls, entry, price, kitchen, hall, parking, modulation, images) VALUES 
-		('$username','$address','$phone','$homeType','$state','$city','$rooms',
-		'$girls', '$entry','$price','$kitchen','$hall','$parking','$modulation', '$imageData')";  
-		//$result = mysqli_query($con, $sql);  
-		// $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
-		// $count = mysqli_num_rows($result);  
+	// 	$sql = "INSERT INTO properties (name, address, phone, homeType, state, city, noOfRooms, 
+	// 	girls, entry, price, kitchen, hall, parking, modulation, images) VALUES 
+	// 	('$username','$address','$phone','$homeType','$state','$city','$rooms',
+	// 	'$girls', '$entry','$price','$kitchen','$hall','$parking','$modulation', '$imageData')";  
+	// 	//$result = mysqli_query($con, $sql);  
+	// 	// $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
+	// 	// $count = mysqli_num_rows($result);  
 		  
-		if($result){  
-			echo '<script>alert("Property Added Successfully")</script>'; 
-		}  
-		else{  
-			echo '<script>alert(Error, Please try again)</script>';  
-		} 
+	// 	if($result){  
+	// 		echo '<script>alert("Property Added Successfully")</script>'; 
+	// 	}  
+	// 	else{  
+	// 		echo '<script>alert(Error, Please try again)</script>';  
+	// 	} 
        
-	}
+	// }
 }
 
 ?>
@@ -198,6 +265,14 @@ form .form-control input{font-size: 14px !important;
 <?php include 'tophead.php';?>
 <?php include 'header.php';?>
 <body>
+	<!-- Status message -->
+<?php echo $statusMsg; ?>
+
+<?php if(!empty($compressedImage)){ ?>
+    <p><b>Original Image Size:</b> <?php echo $imageSize; ?></p>
+    <p><b>Compressed Image Size:</b> <?php echo $compressedImageSize; ?></p>
+    <img src="<?php echo $compressedImage; ?>"/>
+<?php } ?>
 <div class="container">
 <div class="card bg-light">
 <article class="card-body mx-auto" style="max-width: 600px;">

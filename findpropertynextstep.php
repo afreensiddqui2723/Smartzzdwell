@@ -1,5 +1,8 @@
 <?php
+include('dbconn.php'); 
 session_start();
+header("Cache-Control: no cache");
+session_cache_limiter("private_no_expire");
 if(!empty($_POST['submitted'])){
     $_SESSION['state'] = $_POST['state'];  
     $_SESSION['city'] = $_POST['city']; 
@@ -13,7 +16,16 @@ if(!empty($_POST['submitted'])){
         if($count<=0){
             $flag = true;
         }
+        else{
+            if(!isset($_SESSION["userId"])){
+                $actual_link = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	            $_SESSION["url"] = $actual_link;
+                header("Location: signin.php");
+            }
+        }
 
+}else{
+    header("Location: findproperty.php");
 }
 // if (!isset($_SESSION["userId"])){
 // 	$actual_link = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
@@ -193,7 +205,7 @@ if($flag){
   }
 ?>
 <br><br><?php include 'footer.php';?>
-<script>
+<!-- <script>
 	$(document).ready(function() {
 		$('#state-dropdown').on('change', function() {
 			var state_id = this.value;
@@ -215,5 +227,5 @@ if($flag){
     });
 	});
 
-</script>
+</script> -->
 </body></html>
