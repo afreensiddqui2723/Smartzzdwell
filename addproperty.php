@@ -101,7 +101,7 @@ if( isset($_POST['submitted']) ){
 	$result = mysqli_query($con, $sql);  
 	//  $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
 	//  $count = mysqli_num_rows($result);  
-	 echo '<script>alert("Property Added Successfully")</script>'; 
+	 
 		if($result){  
 			$flag = true;
 			// echo '<script>alert("Property Added Successfully")</script>'; 
