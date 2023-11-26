@@ -60,8 +60,26 @@ $uploadPath = "images/";
  
 $statusMsg = ''; 
 $status = 'danger'; 
+$flag = false;
+$flag2 = false;
+$flag3 = false;
+$flag4 = false;
 
 if( isset($_POST['submitted']) ){
+	$username = $_POST['name'];  
+    $address = $_POST['address'];  
+    $phone = $_POST['phone'];  
+    $homeType = $_POST['homeType'];  
+    $state = $_POST['state'];  
+    $city = $_POST['city'];  
+    $rooms = $_POST['rooms'];  
+    $girls = $_POST['girls'];  
+	$entry = $_POST['entry'];
+    $price = $_POST['price'];  
+    $kitchen = $_POST['kitchen'];  
+    $hall = $_POST['hall'];  
+    $parking = $_POST['parking'];  
+    $modulation = $_POST['modulation']; 
 	// Check whether user inputs are empty 
     if(!empty($_FILES["image"]["name"])) { 
         // File info 
@@ -82,14 +100,31 @@ if( isset($_POST['submitted']) ){
             if($compressedImage){ 
                 $compressedImageSize = filesize($compressedImage); 
                 $compressedImageSize = convert_filesize($compressedImageSize); 
-                 
+				$sql = "INSERT INTO properties (name, address, phone, homeType, state, city, noOfRooms, 
+				 	girls, entry, price, kitchen, hall, parking, modulation, images) VALUES 
+				 	('$username','$address','$phone','$homeType','$state','$city','$rooms',
+				 	'$girls', '$entry','$price','$kitchen','$hall','$parking','$modulation', '$imageData')";  
+				$result = mysqli_query($con, $sql);  
+				 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
+				 $count = mysqli_num_rows($result);  
+					  
+					if($result){  
+						$flag = true;
+						// echo '<script>alert("Property Added Successfully")</script>'; 
+					}  
+					else{  
+						$flag2 = true;
+						// echo '<script>alert(Error, Please try again)</script>';  
+					} 
                 $status = 'success'; 
                 $statusMsg = "Image compressed successfully."; 
             }else{ 
-                $statusMsg = "Image compress failed!"; 
+				$flag3 = true;
+                // $statusMsg = "Image compress failed!"; 
             } 
         }else{ 
-            $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.'; 
+			$flag4 = true;
+            // $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.'; 
         } 
     }else{ 
         $statusMsg = 'Please select an image file to upload.'; 
@@ -268,11 +303,11 @@ form .form-control input{font-size: 14px !important;
 	<!-- Status message -->
 <?php echo $statusMsg; ?>
 
-<?php if(!empty($compressedImage)){ ?>
+<!-- <?php if(!empty($compressedImage)){ ?>
     <p><b>Original Image Size:</b> <?php echo $imageSize; ?></p>
     <p><b>Compressed Image Size:</b> <?php echo $compressedImageSize; ?></p>
     <img src="<?php echo $compressedImage; ?>"/>
-<?php } ?>
+<?php } ?> -->
 <div class="container">
 <div class="card bg-light">
 <article class="card-body mx-auto" style="max-width: 600px;">
@@ -477,6 +512,59 @@ form .form-control input{font-size: 14px !important;
 
 </div> 
 <!--container end.//-->
-
+<?php
+if($flag){
+  echo '<script type="text/javascript">
+  $(document).ready(function() {
+      swal({
+  title: "Success",
+  text: "Property Added Successfully",
+  icon: "success",
+  button: "Ok",
+  timer: 5000
+ });
+  });
+ </script>';
+}
+if($flag2){
+  echo '<script type="text/javascript">
+  $(document).ready(function() {
+      swal({
+  title: "Error!",
+  text: "Error, Please try again",
+  icon: "error",
+  button: "Ok",
+  timer: 5000
+ });
+  });
+ </script>';
+}
+if($flag3){
+  echo '<script type="text/javascript">
+  $(document).ready(function() {
+      swal({
+  title: "Error!",
+  text: "Image compress failed!",
+  icon: "error",
+  button: "Ok",
+  timer: 5000
+ });
+  });
+ </script>';
+}
+if($flag4){
+  echo '<script type="text/javascript">
+  $(document).ready(function() {
+      swal({
+  title: "Error!",
+  text: "Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.",
+  icon: "error",
+  button: "Ok",
+  timer: 5000
+ });
+  });
+ </script>';
+}
+ ?>
 <br><br><?php include 'footer.php';?>
 </body></html>
