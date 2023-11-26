@@ -80,8 +80,9 @@ if( isset($_POST['submitted']) ){
     $hall = $_POST['hall'];  
     $parking = $_POST['parking'];  
     $modulation = $_POST['modulation']; 
+	$imageFile = $_FILES["image"]["name"];
 	// Check whether user inputs are empty 
-    if(!empty($_FILES["image"]["name"])) { 
+    if(!empty($imageFile)) { 
         // File info 
         $fileName = basename($_FILES["image"]["name"]); 
         $imageUploadPath = $uploadPath . $fileName; 
@@ -95,7 +96,7 @@ if( isset($_POST['submitted']) ){
             $imageSize = convert_filesize($_FILES["image"]["size"]); 
              
             // Compress size and upload image 
-            $compressedImage = compressImage($imageTemp, $imageUploadPath, 75); 
+            $compressedImage = compressImage($imageTemp, $imageUploadPath, 60); 
              
             if($compressedImage){ 
                 $compressedImageSize = filesize($compressedImage); 
@@ -103,7 +104,7 @@ if( isset($_POST['submitted']) ){
 				$sql = "INSERT INTO properties (name, address, phone, homeType, state, city, noOfRooms, 
 				 	girls, entry, price, kitchen, hall, parking, modulation, images) VALUES 
 				 	('$username','$address','$phone','$homeType','$state','$city','$rooms',
-				 	'$girls', '$entry','$price','$kitchen','$hall','$parking','$modulation', '$imageData')";  
+				 	'$girls', '$entry','$price','$kitchen','$hall','$parking','$modulation', '$imageFile')";  
 				$result = mysqli_query($con, $sql);  
 				 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
 				 $count = mysqli_num_rows($result);  
